@@ -13,11 +13,7 @@ router.post("/task-moved/:taskId", async (req, res) => {
     // Retrieve the details of the task that was moved using the taskId
     const task = await getTaskById(taskId);
     
-    // Extract the ids of members assigned to the task
-    const assigneeIds = task.assignees.map((assignee) => assignee.id);
-    console.log(assigneeIds);
-
-    taskHandler(task, assigneeIds)
+    taskHandler(task)
 
 
     // TODO
