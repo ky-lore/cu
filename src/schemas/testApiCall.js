@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 async function main() {
-  const apiKey = process.env.API_KEY;
+  const apiKey = process.env.PERSONAL_API_KEY;
   const listId = process.env.LIST_ID;
 
   let testTask = {
