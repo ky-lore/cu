@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const adminIds = process.env.ADMIN_IDS.split('_')
+// const adminIds = process.env.ADMIN_IDS.split('_')
 
 const taskList = [
   {
@@ -37,43 +37,47 @@ const taskList = [
     time_estimate: null,
     start_date: null,
     notify_all: true,
-    parent: null
+    parent: null,
+    leads: true
   },
   {
     name: "Assign all members to master ClickUp card",
     description: null,
     markdown_description: null,
-    assignees: adminIds,
+    assignees: null,
     status: "onboarding",
     due_date: 28800000,
     time_estimate: null,
     start_date: null,
     notify_all: true,
-    parent: null
+    parent: null,
+    leads: true
   },
   {
     name: "Assign main POCs to custom fields in ClickUp card",
     description: null,
     markdown_description: null,
-    assignees: adminIds,
+    assignees: null,
     status: "onboarding",
     due_date: 28800000,
     time_estimate: null,
     start_date: null,
     notify_all: true,
-    parent: null
+    parent: null,
+    leads: true
   },
   {
     name: "Schedule leads kickoff call with client",
     description: null,
     markdown_description: null,
-    assignees: adminIds,
+    assignees: null,
     status: "onboarding",
     due_date: 259200000,
     time_estimate: null,
     start_date: null,
     notify_all: true,
-    parent: null
+    parent: null,
+    leads: true
   }
 ]
 

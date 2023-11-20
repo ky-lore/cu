@@ -17,19 +17,23 @@ async function getTaskById(taskId) {
 }
 
 // @desc    Create a subtask in a specified list with the given parent task ID
-// @param   listId - The ID of the list in which the subtask will be created
-// @param   parentTaskId - The ID of the parent task for the subtask
-async function createSubTask(listId, parentTaskId) {
+// @param   listId - The ID of the list in which the subtask will be created - deprecated?
+// @param   parentTaskId - The ID of the parent task for the subtask - deprecated?
+// @param   taskBody - The task object
+async function createSubTask(body) {
   const url = `https://api.clickup.com/api/v2/list/${listId}/task?custom_task_ids=true`;
 
   // Define the body of the request containing subtask details
-  const body = {
+
+  // Will be defined and passed in params
+  /* const body = {
     name: "Subtask",
     description: "New Task Description",
     assignees: [84086508], // Example assignee ID (Steven's ID), replace with actual IDs
     parent: parentTaskId.toString(),
     notify_all: false,
   };
+  */
 
   try {
     await axios.post(url, body, header);
