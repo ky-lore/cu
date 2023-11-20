@@ -1,18 +1,12 @@
 require('dotenv').config();
 const axios = require("axios");
-
-const header = {
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: process.env.PERSONAL_API_KEY,
-  },
-};
-
+const header = require('../../routes/_resources/header')
 const { globalOnboarding } = require('../schemas')
-const currentTime = new Date().getTime();
 const adminIds = process.env.ADMIN_IDS.split('_').map(id => {
   return parseInt(id)
 })
+
+const currentTime = new Date().getTime();
 
 // TODO
 // write parseLeads to assign tasks to each POC based on task
@@ -20,12 +14,27 @@ function parseLeads(task) {
 
 }
 
+function createSubtasks(taskArray, listId) {
+  // hit the CU API with each task object
+  taskArray.forEach(taskObj => {
+    const url = `https://api.clickup.com/api/v2/list/${listId}/task?custom_task_ids=true`;
+
+    try {
+      axios.post(url, taskObj, header);
+    } catch (err) {
+      // TODO: Handle errors appropriately
+      console.error("Error creating subtask:", err.message);
+    }
+  })
+}
+
 /**
  * 
  * @param {object} task The original request object sent from CU passed in from our route
  * @param {array} assigneeIds Array of assignee ID's from the task body above parsed by taskHandler
  */
-async function handleOnboarding(task, assigneeIds) {
+function handleGlobalOnboarding(task, assigneeIds) {
+  let listId = task.list.id
   let taskArray = globalOnboarding.map(obj => {
     return {
       ...obj,
@@ -36,26 +45,16 @@ async function handleOnboarding(task, assigneeIds) {
     }
   })
   console.log(taskArray)
-
-  // hit the CU API with each task object
-  taskArray.forEach(taskObj => {
-      const url = `https://api.clickup.com/api/v2/list/${task.list.id}/task?custom_task_ids=true`;
-
-      try {
-        axios.post(url, taskObj, header);
-      } catch (err) {
-        // TODO: Handle errors appropriately
-        console.error("Error creating subtask:", err.message);
-      }
-  })
+  createSubtasks(taskArray, listId)
 }
+
 
 /**
  * Handles the incoming request body, handles based off of incoming status (later: tags) and returns the final array of tasks to send back to the ClickUp API
  * @param {object} task The request body from /tasks/task-moved/id
  * @returns {array} final array of tasks after handling
  */
-function taskHandler (task) {
+function taskHandler(task) {
   console.log(task)
   const { status } = task.status
 
@@ -65,7 +64,7 @@ function taskHandler (task) {
 
   switch (status) {
     case 'onboarding':
-      handleOnboarding(task, assigneeIds)
+      handleGlobalOnboarding(task, assigneeIds)
   }
 }
 

@@ -15,13 +15,13 @@ router.post("/task-moved/:taskId", async (req, res) => {
     
     taskHandler(task)
 
-
     // TODO
     // const listId = task.list.id - deprecated?;
     // await createSubTask(body);
 
     res.send("Success");
   } catch (error) {
+    console.error(error)
     res.status(500).send("Internal Server Error");
   }
 });
