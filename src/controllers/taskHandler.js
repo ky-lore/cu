@@ -2,51 +2,37 @@ require('dotenv').config();
 const axios = require("axios");
 const header = require('../../routes/_resources/header')
 const { globalOnboarding } = require('../schemas')
+const handleGlobalOnboarding = require('./handleGlobalOnboarding')
+const createSubtasks = require('./createSubtasks')
+const currentTime = new Date().getTime();
 const adminIds = process.env.ADMIN_IDS.split('_').map(id => {
   return parseInt(id)
 })
 
-const currentTime = new Date().getTime();
-
 // TODO
 // write parseLeads to assign tasks to each POC based on task
-function parseLeads(task) {
+// function parseLeads(task) { }
 
-}
-
-function createSubtasks(taskArray, listId) {
-  // hit the CU API with each task object
-  taskArray.forEach(taskObj => {
-    const url = `https://api.clickup.com/api/v2/list/${listId}/task?custom_task_ids=true`;
-
-    try {
-      axios.post(url, taskObj, header);
-    } catch (err) {
-      // TODO: Handle errors appropriately
-      console.error("Error creating subtask:", err.message);
-    }
-  })
-}
-
-/**
- * 
- * @param {object} task The original request object sent from CU passed in from our route
- * @param {array} assigneeIds Array of assignee ID's from the task body above parsed by taskHandler
- */
-function handleGlobalOnboarding(task, assigneeIds) {
-  let listId = task.list.id
-  let taskArray = globalOnboarding.map(obj => {
-    return {
-      ...obj,
-      assignees: obj.leads ? adminIds : assigneeIds,
-      due_date: obj.due_date + currentTime,
-      start_date: currentTime,
-      parent: task.id
-    }
-  })
-  console.log(taskArray)
-  createSubtasks(taskArray, listId)
-}
+// /**
+//  * 
+//  * @param {object} task The original request object sent from CU passed in from our route
+//  * @param {array} assigneeIds Array of assignee ID's from the task body above parsed by taskHandler
+//  * @returns {array} taskArray is then sent to createSubtasks
+//  */
+// function handleGlobalOnboarding(task, assigneeIds) {
+//   let listId = task.list.id
+//   let taskArray = globalOnboarding.map(obj => {
+//     return {
+//       ...obj,
+//       assignees: obj.leads ? adminIds : assigneeIds,
+//       due_date: obj.due_date + currentTime,
+//       start_date: currentTime,
+//       parent: task.id
+//     }
+//   })
+//   console.log(taskArray)
+//   createSubtasks(taskArray, listId)
+// }
 
 
 /**
