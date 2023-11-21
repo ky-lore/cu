@@ -1,9 +1,6 @@
 const { globalOnboarding } = require('../schemas')
-const currentTime = new Date().getTime();
-const createSubtasks = require('./createSubtasks')
-const adminIds = process.env.ADMIN_IDS.split('_').map(id => {
-  return parseInt(id)
-})
+const { datetime, adminIds } = require('../utils')
+const createSubtasks = require('../controllers/createSubtasks')
 
 /**
  * 
@@ -17,12 +14,11 @@ function handleGlobalOnboarding(task, assigneeIds) {
     return {
       ...obj,
       assignees: obj.leads ? adminIds : assigneeIds,
-      due_date: obj.due_date + currentTime,
-      start_date: currentTime,
+      due_date: obj.due_date + datetime(),
+      start_date: datetime(),
       parent: task.id
     }
   })
-  console.log(taskArray)
   createSubtasks(taskArray, listId)
 }
 
