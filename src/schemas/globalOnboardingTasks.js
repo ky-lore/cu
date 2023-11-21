@@ -1,7 +1,5 @@
 require('dotenv').config();
 
-// const adminIds = process.env.ADMIN_IDS.split('_')
-
 const taskList = [
   {
     name: "Confirm Onboarding Form",
@@ -80,8 +78,5 @@ const taskList = [
     leads: true
   }
 ]
-
-// assignees, parent will both be applied after request
-// due_date will accept request time's unixtime added to it
 
 module.exports = taskList
