@@ -1,3 +1,4 @@
 module.exports = {
-  handleGlobalOnboarding: require('./handleGlobalOnboarding')
+  handleGlobalOnboarding: require('./handleGlobalOnboarding'),
+  handleStratOnboarding: require('./handleGlobalStrat')
 }
