@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { handleGlobalOnboarding, handleStratOnboarding } = require('../services')
+const { handleOnboarding, handleStrat } = require('../services')
 
 // TODO
 // write parseLeads to assign tasks to each POC based on task
@@ -21,10 +21,10 @@ function taskHandler(task) {
 
   switch (status) {
     case 'onboarding':
-      handleGlobalOnboarding(task, assigneeIds)
+      handleOnboarding(task, assigneeIds)
       break
     case 'strategizing':
-      handleStratOnboarding(task, assigneeIds)
+      handleStrat(task, assigneeIds)
       break
   }
 }
