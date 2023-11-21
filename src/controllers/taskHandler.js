@@ -1,13 +1,7 @@
 require('dotenv').config();
-const axios = require("axios");
-const header = require('../../routes/_resources/header')
+
 const { globalOnboarding } = require('../schemas')
-const handleGlobalOnboarding = require('./handleGlobalOnboarding')
-const createSubtasks = require('./createSubtasks')
-const currentTime = new Date().getTime();
-const adminIds = process.env.ADMIN_IDS.split('_').map(id => {
-  return parseInt(id)
-})
+const { handleGlobalOnboarding } = require('../services')
 
 // TODO
 // write parseLeads to assign tasks to each POC based on task
@@ -29,9 +23,9 @@ function taskHandler(task) {
   switch (status) {
     case 'onboarding':
       handleGlobalOnboarding(task, assigneeIds)
-      // TODO: handleSocOnboarding
-      // TODO: handleSrcOnboarding
-      // TODO: handleCroOnboarding
+    // TODO: handleSocOnboarding
+    // TODO: handleSrcOnboarding
+    // TODO: handleCroOnboarding
   }
 }
 

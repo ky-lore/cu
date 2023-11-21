@@ -1,6 +1,4 @@
-require('dotenv').config();
-
-const taskList = [
+module.exports = [
   {
     name: "Confirm Onboarding Form",
     description: null,
@@ -11,7 +9,8 @@ const taskList = [
     time_estimate: null,
     start_date: null,
     notify_all: true,
-    parent: null
+    parent: null,
+    leads: true
   },
   {
     name: "Pin live onboarding doc to INTERNAL Slack channel",
@@ -23,7 +22,8 @@ const taskList = [
     time_estimate: null,
     start_date: null,
     notify_all: true,
-    parent: null
+    parent: null,
+    leads: true
   },
   {
     name: "Introduce self to client in EXTERNAL Slack channel",
@@ -76,7 +76,44 @@ const taskList = [
     notify_all: true,
     parent: null,
     leads: true
+  },
+  {
+    name: "SEARCH: Confirm asset connections & logins",
+    description: null,
+    markdown_description: null,
+    assignees: null,
+    status: "onboarding",
+    due_date: 259200000,
+    time_estimate: null,
+    start_date: null,
+    notify_all: true,
+    parent: null,
+    leads: true
+  },
+  {
+    name: "SOCIAL: Confirm asset connections & logins",
+    description: null,
+    markdown_description: null,
+    assignees: null,
+    status: "onboarding",
+    due_date: 259200000,
+    time_estimate: null,
+    start_date: null,
+    notify_all: true,
+    parent: null,
+    leads: true
+  },
+  {
+    name: "CRO: Confirm asset connections & logins",
+    description: null,
+    markdown_description: null,
+    assignees: null,
+    status: "onboarding",
+    due_date: 259200000,
+    time_estimate: null,
+    start_date: null,
+    notify_all: true,
+    parent: null,
+    leads: true
   }
 ]
-
-module.exports = taskList
