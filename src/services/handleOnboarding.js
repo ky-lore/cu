@@ -1,9 +1,6 @@
 const { globalOnboarding } = require('../schemas')
-const currentTime = new Date().getTime();
-const createSubtasks = require('./createSubtasks')
-const adminIds = process.env.ADMIN_IDS.split('_').map(id => {
-  return parseInt(id)
-})
+const { datetime, adminIds } = require('../utils')
+const { createSubtasks } = require('../controllers')
 
 /**
  * 
@@ -11,19 +8,18 @@ const adminIds = process.env.ADMIN_IDS.split('_').map(id => {
  * @param {array} assigneeIds Array of assignee ID's from the task body above parsed by taskHandler
  * @returns {array} taskArray is then sent to createSubtasks.js
  */
-function handleGlobalOnboarding(task, assigneeIds) {
+function handleOnboarding(task, assigneeIds) {
   let listId = task.list.id
   let taskArray = globalOnboarding.map(obj => {
     return {
       ...obj,
       assignees: obj.leads ? adminIds : assigneeIds,
-      due_date: obj.due_date + currentTime,
-      start_date: currentTime,
+      due_date: obj.due_date + datetime(),
+      start_date: datetime(),
       parent: task.id
     }
   })
-  console.log(taskArray)
   createSubtasks(taskArray, listId)
 }
 
-module.exports = handleGlobalOnboarding
+module.exports = handleOnboarding

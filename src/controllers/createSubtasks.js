@@ -5,7 +5,7 @@ const header = require('../../routes/_resources/header')
 /**
  * 
  * @param {*} taskArray array of initialized tasks from handleGlobalOnboarding in taskHandler.js
- * @param {*} listId 
+ * @param {*} listId needed to push to corresponding CU board
  */
 function createSubtasks(taskArray, listId) {
   // hit the CU API with each task object

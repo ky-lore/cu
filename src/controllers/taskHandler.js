@@ -1,39 +1,10 @@
 require('dotenv').config();
-const axios = require("axios");
-const header = require('../../routes/_resources/header')
-const { globalOnboarding } = require('../schemas')
-const handleGlobalOnboarding = require('./handleGlobalOnboarding')
-const createSubtasks = require('./createSubtasks')
-const currentTime = new Date().getTime();
-const adminIds = process.env.ADMIN_IDS.split('_').map(id => {
-  return parseInt(id)
-})
+
+const { handleOnboarding, handleStrat } = require('../services')
 
 // TODO
 // write parseLeads to assign tasks to each POC based on task
 // function parseLeads(task) { }
-
-// /**
-//  * 
-//  * @param {object} task The original request object sent from CU passed in from our route
-//  * @param {array} assigneeIds Array of assignee ID's from the task body above parsed by taskHandler
-//  * @returns {array} taskArray is then sent to createSubtasks
-//  */
-// function handleGlobalOnboarding(task, assigneeIds) {
-//   let listId = task.list.id
-//   let taskArray = globalOnboarding.map(obj => {
-//     return {
-//       ...obj,
-//       assignees: obj.leads ? adminIds : assigneeIds,
-//       due_date: obj.due_date + currentTime,
-//       start_date: currentTime,
-//       parent: task.id
-//     }
-//   })
-//   console.log(taskArray)
-//   createSubtasks(taskArray, listId)
-// }
-
 
 /**
  * Handles the incoming request body, handles based off of incoming status (later: tags) and returns the final array of tasks to send back to the ClickUp API
@@ -50,7 +21,11 @@ function taskHandler(task) {
 
   switch (status) {
     case 'onboarding':
-      handleGlobalOnboarding(task, assigneeIds)
+      handleOnboarding(task, assigneeIds)
+      break
+    case 'strategizing':
+      handleStrat(task, assigneeIds)
+      break
   }
 }
 

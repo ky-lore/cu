@@ -13,11 +13,8 @@ router.post("/task-moved/:taskId", async (req, res) => {
     // Retrieve the details of the task that was moved using the taskId
     const task = await getTaskById(taskId);
     
-    taskHandler(task)
-
-    // TODO
-    // const listId = task.list.id - deprecated?;
-    // await createSubTask(body);
+    // taskHandler handles the task
+    await taskHandler(task)
 
     res.send("Success");
   } catch (error) {
