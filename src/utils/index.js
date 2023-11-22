@@ -1,5 +1,6 @@
 module.exports = {
   datetime: require('./datetime'),
   adminIds: require('./adminIds.js'),
-  createSubtasks: require('../controllers/createSubtasks')
+  createSubtasks: require('../controllers/createSubtasks'),
+  parseLeads: require('./parseLeads')
 }

@@ -1,6 +1,6 @@
 const { globalOnboarding } = require('../schemas')
 const { datetime, adminIds } = require('../utils')
-const createSubtasks = require('../controllers/createSubtasks')
+const { createSubtasks } = require('../controllers')
 
 /**
  * 
@@ -8,7 +8,7 @@ const createSubtasks = require('../controllers/createSubtasks')
  * @param {array} assigneeIds Array of assignee ID's from the task body above parsed by taskHandler
  * @returns {array} taskArray is then sent to createSubtasks.js
  */
-function handleGlobalOnboarding(task, assigneeIds) {
+function handleOnboarding(task, assigneeIds) {
   let listId = task.list.id
   let taskArray = globalOnboarding.map(obj => {
     return {
@@ -22,4 +22,4 @@ function handleGlobalOnboarding(task, assigneeIds) {
   createSubtasks(taskArray, listId)
 }
 
-module.exports = handleGlobalOnboarding
+module.exports = handleOnboarding
