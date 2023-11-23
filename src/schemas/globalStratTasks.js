@@ -16,7 +16,7 @@ const gblTasks = [
     name: "Schedule initial strategy meet",
     due_date: 8 * hours
   }
-].map(obj => ({ ..obj, flag: taskFlags.gbl }));
+].map(obj => ({ ...obj, flag: taskFlags.gbl }));
 
 const srchTasks = [
   {
@@ -29,7 +29,7 @@ const srchTasks = [
     due_date: 2 * days,
     flag: 'srch'
   }
-].map(obj => ({ ..obj, flag: taskFlags.srch }));
+].map(obj => ({ ...obj, flag: taskFlags.srch }));
 
 const soclTasks = [
   {
@@ -44,7 +44,7 @@ const soclTasks = [
     name: "Creative requests if needed",
     due_date: 1 * days
   }
-]..map(obj => ({ ..obj, flag: taskFlags.socl }));
+].map(obj => ({ ...obj, flag: taskFlags.socl }));
 
 const croTasks = [
   {
@@ -59,14 +59,14 @@ const croTasks = [
     name: "Create and pin mind map",
     due_date: 2 * days
   }
-].map(obj => ({ ..obj, flag: taskFlags.cro }));
+].map(obj => ({ ...obj, flag: taskFlags.cro }));
 
 const ctvTasks = [
   {
     name: "Curate style guide if non-existent",
     due_date: 1 * days
   }
-].map(obj => ({ ..obj, flag: taskFlags.ctv }));
+].map(obj => ({ ...obj, flag: taskFlags.ctv }));
 
 // Concatenating all four arrays into one final export array to send to createSubtasks
 module.exports = [...gblTasks, ...srchTasks, ...soclTasks, ...croTasks, ...ctvTasks]
