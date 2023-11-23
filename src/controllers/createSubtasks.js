@@ -1,10 +1,9 @@
 const axios = require('axios')
 const header = require('../../routes/_resources/header')
 
-// TODO: import this as a separate controller file
 /**
  * 
- * @param {*} taskArray array of initialized tasks from handleGlobalOnboarding in taskHandler.js
+ * @param {*} taskArray array of initialized tasks from taskHandler.js
  * @param {*} listId needed to push to corresponding CU board
  */
 function createSubtasks(taskArray, listId) {
