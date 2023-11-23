@@ -1,10 +1,7 @@
 require('dotenv').config();
 
-const { handleOnboarding, handleStrat } = require('../services')
-
-// TODO
-// write parseLeads to assign tasks to each POC based on task
-// function parseLeads(task) { }
+const { assign } = require('lodash');
+const { handleOnboarding, handleStrat, handleDev } = require('../services')
 
 /**
  * Handles the incoming request body, handles based off of incoming status (later: tags) and returns the final array of tasks to send back to the ClickUp API
@@ -25,6 +22,9 @@ function taskHandler(task) {
       break
     case 'strategizing':
       handleStrat(task, assigneeIds)
+      break
+    case 'development':
+      handleDev(task, assigneeIds)
       break
   }
 }
