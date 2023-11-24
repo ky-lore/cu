@@ -1,3 +1,4 @@
+// not in use - template with all fields that are passed in by CU API
 const templateObject = {
   name: "New Task Name",
   description: "New Task Description",
