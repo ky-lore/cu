@@ -28,7 +28,7 @@ function createTasks(time) {
   let taskArray = usersDb.map(user => ({
     name: `${user._name.split(' ')[0]} ${time.time} Check In ${time.emoji}`,
     assignees: [user.uid],
-    parent: '86ayr6q5f',
+    parent: process.env.DAILYTASK_ID,
     custom_fields: [{
         id: process.env.CUSTOMFIELDID,
         value: process.env.DAILYTASK_SLACKID
