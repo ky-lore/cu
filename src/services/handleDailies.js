@@ -32,10 +32,10 @@ function createTasks(time) {
     custom_fields: [{
         id: process.env.CUSTOMFIELDID,
         value: process.env.DAILYTASK_SLACKID
-    }]
+    }],
+    due_date: user.due_date
   }))
-
-  console.log(taskArray)
+  
   createSubtasks(taskArray, process.env.LIST_ID)
 }
 
