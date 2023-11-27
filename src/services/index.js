@@ -1,5 +1,6 @@
 module.exports = {
   handleOnboarding: require('./handleOnboarding'),
   handleStrat: require('./handleStrat'),
-  handleDev: require('./handleDev')
+  handleDev: require('./handleDev'),
+  handleDailies: require('./handleDailies')
 }
