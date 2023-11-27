@@ -1,5 +1,5 @@
 const express = require("express");
-const { createDailies } = require('./src/services')
+const { handleDailies } = require('./src/services')
 
 const app = express();
 
@@ -11,4 +11,4 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-createDailies();
+handleDailies();
