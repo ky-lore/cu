@@ -1,6 +1,7 @@
 require('dotenv').config()
 const { usersDb } = require('../db')
 const { datetime } = require('../utils')
+const { createSubtasks } = require('../controllers')
 const schedule = require('node-schedule');
 
 // unixtime for hours used in object passed in createTasks(obj) if we need to quickly modify timelines
@@ -16,7 +17,7 @@ morningRule.minute = 0;
 let nightRule = new schedule.RecurrenceRule();
 nightRule.dayOfWeek = new schedule.Range(1, 5)
 nightRule.hour = 15;
-nightRule.minute = 30;
+nightRule.minute = 15;
 
 /**
  * 
@@ -27,7 +28,7 @@ function createTasks(time) {
   let taskArray = usersDb.map(user => ({
     name: `${user._name.split(' ')[0]} ${time.time} Check In ${time.emoji}`,
     assignees: [user.uid],
-    parent: process.env.DAILYTASK_ID,
+    parent: '86ayr6q5f',
     custom_fields: [{
         id: process.env.CUSTOMFIELDID,
         value: process.env.DAILYTASK_SLACKID
@@ -35,6 +36,7 @@ function createTasks(time) {
   }))
 
   console.log(taskArray)
+  createSubtasks(taskArray, process.env.LIST_ID)
 }
 
 function scheduler() {
