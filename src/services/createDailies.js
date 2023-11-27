@@ -8,6 +8,9 @@ const schedule = require('node-schedule');
 
 function createDailies(time) {
   let taskArray = []
+  const morning = schedule.scheduleJob('30 * * * * *', function() {
+    console.log('THE SCHEDULE WORKS')
+  });
 }
 
 module.exports = createDailies
