@@ -31,8 +31,10 @@ In alpha build and locally functional, preparing for deployment and live testing
 
 ## Getting Started
 
-Clone this repository to set up ClickUp Ops locally and follow any additional setup steps as needed.
+Clone this repository to set up ClickUp Ops locally and initialize the organizations .ENV file.
 
 ```bash
-git clone https://github.com/BOOST-Media/ClickUp.git
-cd ClickUp
+git clone https://github.com/BOOST-Media/clickup.git
+cd clickup
+npm i
+npm run server
