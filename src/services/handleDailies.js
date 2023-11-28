@@ -25,31 +25,33 @@ nightRule.minute = 15;
  */
 function createTasks(time) {
 
-  let taskArray = usersDb.map(user => ({
-    name: `${user._name.split(' ')[0]} ${time.time} Check In ${time.emoji}`,
-    assignees: [user.uid],
-    parent: process.env.DAILYTASK_ID,
-    custom_fields: [{
+  let taskArray = usersDb
+    .map(user => ({
+      name: `${user._name.split(' ')[0]} ${time.time} Check In ${time.emoji}`,
+      assignees: [user.uid],
+      parent: process.env.DAILYTASK_ID,
+      custom_fields: [{
         id: process.env.CUSTOMFIELDID,
         value: process.env.DAILYTASK_SLACKID
-    }],
-    due_date: user.due_date
-  }))
-  
+      }],
+      due_date: user.due_date
+    }))
+    .filter(user => !user.exempt)
+
   createSubtasks(taskArray, process.env.LIST_ID)
 }
 
 function scheduler() {
-  
-  const morning = schedule.scheduleJob(morningRule, function() {
+
+  const morning = schedule.scheduleJob(morningRule, function () {
     createTasks({
       time: 'Morning',
       emoji: '🌅',
       due_date: (1 * hours) + datetime
     })
   });
-  
-  const night = schedule.scheduleJob(nightRule, function() {
+
+  const night = schedule.scheduleJob(nightRule, function () {
     console.log('test')
     createTasks({
       time: 'Evening',

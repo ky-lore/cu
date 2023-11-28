@@ -1,54 +1,67 @@
 module.exports = [
   {
     _name: 'Alexis Martin',
-    uid: 84100111
+    uid: 84100111,
+    exempt: true
   },
   {
     _name: 'Abby McCormick',
-    uid: 44588182
+    uid: 44588182,
+    exempt: false
   },
   {
     _name: 'Kyle Lorenzo',
-    uid: 5997125
+    uid: 5997125,
+    exempt: false
   },
   {
     _name: 'Chris Baker',
-    uid: 14881210
+    uid: 14881210,
+    exempt: true
   },
   {
     _name: 'Danny Pawelski',
-    uid: 82219496
+    uid: 82219496,
+    exempt: false
   },
   {
     _name: 'Darren Le',
-    uid: 44126937
+    uid: 44126937,
+    exempt: false
   },
   {
     _name: 'Michael Fances',
-    uid: 14781133
+    uid: 14781133,
+    exempt: true
   },
   {
     _name: 'Michelle Gao',
-    uid: 56419683
+    uid: 56419683,
+    exempt: false
   },
   {
     _name: 'Nate Park',
-    uid: 82219495
+    uid: 82219495,
+    exempt: true
   },
   {
     _name: 'Nestor Rodriguez',
-    uid: 26111639
+    uid: 26111639,
+    exempt: false
   },
   {
     _name: 'Patrick Lam',
-    uid: 26331210
+    uid: 26331210,
+    exempt: false
   },
   {
     _name: 'Sandra Miller',
-    uid: 26199940
+    uid: 26199940,
+    exempt: false
   },
   {
     _name: 'Victor Villeda',
-    uid: 50647944
+    uid: 50647944,
+    exempt: false
   }
 ]
