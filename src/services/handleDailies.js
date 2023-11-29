@@ -34,7 +34,7 @@ function createTasks(time) {
         id: process.env.CUSTOMFIELDID,
         value: process.env.DAILYTASK_SLACKID
       }],
-      due_date: user.due_date
+      due_date: time.due_date
     }))
     .filter(user => !user.exempt)
 
