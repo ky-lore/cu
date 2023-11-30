@@ -1,5 +1,6 @@
 module.exports = {
   globalOnboarding: require('./globalOnboardingTasks'),
   globalStrat: require('./globalStratTasks'),
-  globalDev: require('./globalDevTasks')
+  globalDev: require('./globalDevTasks'),
+  globalInitialLive: require('./globalInitialLiveTasks')
 }
