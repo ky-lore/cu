@@ -1,7 +1,6 @@
 require('dotenv').config();
 
-const { assign } = require('lodash');
-const { handleOnboarding, handleStrat, handleDev } = require('../services')
+const { handleOnboarding, handleStrat, handleDev, handleLive } = require('../services')
 
 /**
  * Handles the incoming request body, handles based off of incoming status (later: tags) and returns the final array of tasks to send back to the ClickUp API
@@ -25,6 +24,9 @@ function taskHandler(task) {
       break
     case 'development':
       handleDev(task, assigneeIds)
+      break
+    case 'live':
+      handleLive(task, assigneeIds)
       break
   }
 }
