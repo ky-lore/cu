@@ -47,7 +47,7 @@ function scheduler() {
     createTasks({
       time: 'Morning',
       emoji: '🌅',
-      due_date: (1 * hours) + datetime
+      due_date: (1 * hours) + datetime()
     })
   });
 
@@ -56,7 +56,7 @@ function scheduler() {
     createTasks({
       time: 'Evening',
       emoji: '🛫',
-      due_date: (2 * hours) + datetime
+      due_date: (2 * hours) + datetime()
     })
   })
 
