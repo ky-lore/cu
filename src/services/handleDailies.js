@@ -52,7 +52,6 @@ function scheduler() {
   });
 
   const night = schedule.scheduleJob(nightRule, function () {
-    console.log('test')
     createTasks({
       time: 'Evening',
       emoji: '🛫',
