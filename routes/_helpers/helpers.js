@@ -16,6 +16,28 @@ async function getTaskById(taskId) {
   }
 }
 
+/**
+ * 
+ * @param {object} task from the reschedule route
+ * @returns parses field for times rescheduled and passes it back to update and increment the field by 1
+ */
+async function updateTask(task) {
+  // console.log(task)
+  const field = task.custom_fields.find(field => field.name === 'Times Rescheduled') || {};
+  const url = `https://api.clickup.com/api/v2/task/${task.id}/field/${field.id}`;
+  const body = JSON.stringify({
+    value: parseInt(field.value) + 1
+  })
+  try {
+    const response = await axios.post(url, body, header);
+    return response.data;
+  } catch (err) {
+    // TODO: Handle errors appropriately
+    console.error("Error fetching task details:", err.message);
+    console.error(err)
+  }
+}
+
 // @desc    Create a subtask in a specified list with the given parent task ID
 // @param   listId - The ID of the list in which the subtask will be created - deprecated?
 // @param   parentTaskId - The ID of the parent task for the subtask - deprecated?
@@ -46,4 +68,5 @@ async function createSubTask(body) {
 module.exports = {
   getTaskById,
   createSubTask,
+  updateTask
 };
