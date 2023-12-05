@@ -24,9 +24,11 @@ async function getTaskById(taskId) {
 async function updateTask(task) {
   // console.log(task)
   const field = task.custom_fields.find(field => field.name === 'Times Rescheduled') || {};
+  const parsedVal = field.value ? parseInt(field.value) : 0
+  console.log(parsedVal)
   const url = `https://api.clickup.com/api/v2/task/${task.id}/field/${field.id}`;
   const body = JSON.stringify({
-    value: parseInt(field.value) + 1
+    value: parsedVal + 1
   })
   try {
     const response = await axios.post(url, body, header);
