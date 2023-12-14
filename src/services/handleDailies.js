@@ -44,7 +44,7 @@ function createTasks(time) {
 
 function scheduler() {
 
-  const morning = schedule.scheduleJob(morningRule, function () {
+  schedule.scheduleJob(morningRule, function () {
     createTasks({
       time: 'Morning',
       emoji: '🌅',
@@ -52,7 +52,7 @@ function scheduler() {
     })
   });
 
-  const night = schedule.scheduleJob(nightRule, function () {
+  schedule.scheduleJob(nightRule, function () {
     createTasks({
       time: 'Evening',
       emoji: '🛫',
