@@ -7,6 +7,7 @@ const header = require('../../routes/_resources/header')
  * @param {*} listId needed to push to corresponding CU board
  */
 function createSubtasks(taskArray, listId) {
+  console.log(taskArray)
   // hit the CU API with each task object
   taskArray.forEach(taskObj => {
     const url = `https://api.clickup.com/api/v2/list/${listId}/task?custom_task_ids=true`;
