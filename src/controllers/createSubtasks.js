@@ -10,6 +10,7 @@ function createSubtasks(taskArray, listId) {
   console.log(taskArray)
   // hit the CU API with each task object
   taskArray.forEach(taskObj => {
+    console.log('task ref')
     const url = `https://api.clickup.com/api/v2/list/${listId}/task?custom_task_ids=true`;
 
     try {
