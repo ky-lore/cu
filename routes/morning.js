@@ -36,7 +36,7 @@ function handler(time) {
 router.get("/", async (req, res) => {
   try {
     console.log('test')
-    handler(morning)
+    await handler(morning)
     res.send("Success");
   } catch (error) {
     console.error(error)
