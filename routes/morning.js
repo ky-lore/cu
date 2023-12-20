@@ -4,6 +4,8 @@ const { usersDb } = require('../src/db')
 const { datetime } = require('../src/utils')
 const { createSubtasks } = require('../src/controllers')
 
+const hours = 3600000
+
 const morning = {
   time: 'Morning',
   emoji: '🌅',
