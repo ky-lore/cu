@@ -43,7 +43,7 @@ function createTasks(time) {
 }
 
 function scheduler() {
-
+  console.log('scheduled')
   schedule.scheduleJob(morningRule, function () {
     createTasks({
       time: 'Morning',
