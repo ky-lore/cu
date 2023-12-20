@@ -12,7 +12,7 @@ const morning = {
   due_date: (1 * hours) + datetime()
 }
 
-function handler(time) {
+async function handler(time) {
   let taskArray = usersDb
     .map(user => ({
       name: `${user._name.split(' ')[0]} ${time.time} Check In ${time.emoji}`,
@@ -26,7 +26,7 @@ function handler(time) {
     }))
     .filter(user => !user.exempt)
 
-    createSubtasks(taskArray, process.env.LIST_ID)
+    await createSubtasks(taskArray, process.env.LIST_ID)
 }
 
 // @route   GET /morning
