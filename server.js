@@ -7,6 +7,7 @@ app.use("/tasks", require("./routes/tasks"));
 app.use("/recur", require("./routes/recur"));
 app.use("/reschedule", require("./routes/reschedule"));
 app.use("/morning", require("./routes/morning"));
+app.use("/night", require("./routes/night"));
 
 const port = process.env.PORT;
 
