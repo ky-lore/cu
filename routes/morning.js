@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { usersDb } = require('../src/db')
-const { datetime } = require('../utils')
-const { createSubtasks } = require('../controllers')
+const { datetime } = require('../src/utils')
+const { createSubtasks } = require('../src/controllers')
 
 const morning = {
   time: 'Morning',
