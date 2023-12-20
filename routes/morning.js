@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const { usersDb } = require('../db')
 const { datetime } = require('../utils')
 const { createSubtasks } = require('../controllers')
 
@@ -11,21 +10,22 @@ const morning = {
 }
 
 function handler(time) {
-  let taskArray = usersDb
-    .map(user => ({
-      name: `${user._name.split(' ')[0]} ${time.time} Check In ${time.emoji}`,
-      assignees: [user.uid],
-      parent: process.env.DAILYTASK_ID,
-      custom_fields: [{
-        id: process.env.CUSTOMFIELDID,
-        value: process.env.DAILYTASK_SLACKID
-      }],
-      due_date: time.due_date,
-      exempt: user.exempt
-    }))
-    .filter(user => !user.exempt)
+  console.log(time)
+  // let taskArray = usersDb
+  //   .map(user => ({
+  //     name: `${user._name.split(' ')[0]} ${time.time} Check In ${time.emoji}`,
+  //     assignees: [user.uid],
+  //     parent: process.env.DAILYTASK_ID,
+  //     custom_fields: [{
+  //       id: process.env.CUSTOMFIELDID,
+  //       value: process.env.DAILYTASK_SLACKID
+  //     }],
+  //     due_date: time.due_date,
+  //     exempt: user.exempt
+  //   }))
+  //   .filter(user => !user.exempt)
 
-  createSubtasks(taskArray, process.env.LIST_ID)
+  // createSubtasks(taskArray, process.env.LIST_ID)
 }
 
 // @route   GET /morning
