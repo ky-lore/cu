@@ -10,12 +10,12 @@ const hours = 3600000
 // These RecurrenceRule() objects are essentially just more readable cron
 // schedule.Range is replaceable by an array [1,2,3,4,5] etc.
 let morningRule = new schedule.RecurrenceRule();
-morningRule.dayOfWeek = new schedule.Range(1, 5)
+morningRule.dayOfWeek = new schedule.Range([1,2,3,4,5])
 morningRule.hour = 8;
 morningRule.minute = 0;
 
 let nightRule = new schedule.RecurrenceRule();
-nightRule.dayOfWeek = new schedule.Range(1, 5)
+nightRule.dayOfWeek = new schedule.Range([1,2,3,4,5])
 nightRule.hour = 15;
 nightRule.minute = 15;
 
