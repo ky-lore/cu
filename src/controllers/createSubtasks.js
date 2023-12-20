@@ -14,6 +14,8 @@ function createSubtasks(taskArray, listId) {
     const url = `https://api.clickup.com/api/v2/list/${listId}/task?custom_task_ids=true`;
 
     try {
+      console.log(url)
+      console.log(header)
       console.log(taskObj)
       console.log(JSON.stringify(taskObj))
       axios.post(url, JSON.stringify(taskObj), header);
