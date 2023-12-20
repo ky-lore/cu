@@ -6,9 +6,9 @@ const { createSubtasks } = require('../src/controllers')
 
 const hours = 3600000
 
-const morning = {
-  time: 'Morning',
-  emoji: '🌅',
+const night = {
+  time: 'Evening',
+  emoji: '🌃',
   due_date: (1 * hours) + datetime()
 }
 
@@ -27,7 +27,7 @@ async function handler(time) {
     }))
     .filter(user => !user.exempt)
 
-    await createSubtasks(taskArray, process.env.LIST_ID)
+  await createSubtasks(taskArray, process.env.LIST_ID)
 }
 
 // @route   GET /morning
@@ -36,7 +36,7 @@ async function handler(time) {
 router.get("/", async (req, res) => {
   try {
     console.log('test')
-    await handler(morning)
+    await handler(night)
     res.send("Success");
   } catch (error) {
     console.error(error)

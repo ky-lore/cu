@@ -9,7 +9,6 @@ const header = require('../../routes/_resources/header');
 async function createSubtasks(taskArray, listId) {
   console.log(taskArray);
 
-  // Use Promise.all to wait for all requests to complete
   await Promise.all(taskArray.map(async (taskObj) => {
     const url = `https://api.clickup.com/api/v2/list/${listId}/task?custom_task_ids=true`;
 
