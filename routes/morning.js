@@ -27,6 +27,7 @@ function handler(time) {
     }))
     .filter(user => !user.exempt)
 
+    console.log(taskArray)
   createSubtasks(taskArray, process.env.LIST_ID)
 }
 
