@@ -14,6 +14,7 @@ function createSubtasks(taskArray, listId) {
 
     try {
       axios.post(url, taskObj, header);
+      console.log('attempted')
     } catch (err) {
       // TODO: Handle errors appropriately
       console.error("Error creating subtask:", err.message);
