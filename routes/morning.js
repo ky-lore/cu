@@ -22,13 +22,11 @@ function handler(time) {
         id: process.env.CUSTOMFIELDID,
         value: process.env.DAILYTASK_SLACKID
       }],
-      due_date: time.due_date,
       exempt: user.exempt
     }))
     .filter(user => !user.exempt)
 
-    console.log(taskArray)
-  createSubtasks(taskArray, process.env.LIST_ID)
+    createSubtasks(taskArray, process.env.LIST_ID)
 }
 
 // @route   GET /morning
