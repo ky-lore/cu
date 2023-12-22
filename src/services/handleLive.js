@@ -8,7 +8,7 @@ const { createSubtasks } = require('../controllers')
  * @param {array} assigneeIds Array of assignee ID's from the task body above parsed by taskHandler
  * @returns {array} taskArray is then sent to createSubtasks.js
  */
-function handleLive(task, assigneeIds) {
+async function handleLive(task, assigneeIds) {
   const leads = parseLeads(task)
   const parsedTags = parseTags(task.tags)
   const listId = task.list.id
@@ -50,7 +50,7 @@ function handleLive(task, assigneeIds) {
     }
   })
 
-  createSubtasks(finalArray, listId)
+  await createSubtasks(finalArray, listId)
 }
 
 module.exports = handleLive
