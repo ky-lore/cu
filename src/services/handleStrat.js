@@ -8,7 +8,7 @@ const { createSubtasks } = require('../controllers')
  * @param {array} assigneeIds Array of assignee ID's from the task body above parsed by taskHandler
  * @returns {array} taskArray is then sent to createSubtasks.js
  */
-function handleStrat(task, assigneeIds) {
+async function handleStrat(task, assigneeIds) {
   const leads = parseLeads(task)
   const listId = task.list.id
   let assigneesArr = []
@@ -42,7 +42,7 @@ function handleStrat(task, assigneeIds) {
       parent: task.id
     }
   })
-  createSubtasks(taskArray, listId)
+  await createSubtasks(taskArray, listId)
 }
 
 module.exports = handleStrat
