@@ -3,6 +3,7 @@ const router = express.Router();
 const { usersDb } = require('../src/db')
 const { datetime } = require('../src/utils')
 const { createSubtasks } = require('../src/controllers')
+const { assignLsa } = require('./_helpers/helpers')
 
 const hours = 3600000
 
@@ -37,6 +38,7 @@ router.get("/", async (req, res) => {
   try {
     console.log('test')
     await handler(morning)
+    await assignLsa()
     res.send("Success");
   } catch (error) {
     console.error(error)

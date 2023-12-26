@@ -1,5 +1,6 @@
 const express = require("express");
 const { handleDailies } = require('./src/services')
+const { assignLsa } = require('./routes/_helpers/helpers')
 
 const app = express();
 
@@ -14,3 +15,5 @@ const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+assignLsa()

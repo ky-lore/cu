@@ -16,6 +16,19 @@ async function getTaskById(taskId) {
   }
 }
 
+async function assignLsa(listId) {
+  const url = `https://api.clickup.com/api/v2/list/${process.env.LIST_ID}/task?tags=lsa&tags=lsa`;
+
+  try {
+    const response = await axios.get(url, header);
+    console.log(response.data.tasks)
+    return response.data;
+  } catch (err) {
+    // TODO: Handle errors appropriately
+    console.error("Error fetching task details:", err.message);
+  }
+}
+
 /**
  * 
  * @param {object} task from the reschedule route
@@ -70,5 +83,6 @@ async function createSubTask(body) {
 module.exports = {
   getTaskById,
   createSubTask,
-  updateTask
+  updateTask,
+  assignLsa
 };
