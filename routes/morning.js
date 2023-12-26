@@ -38,8 +38,10 @@ router.get("/", async (req, res) => {
   try {
     console.log('test')
     await handler(morning)
-    const lsaArray = await assignLsa()
-    await createSubtasks(lsaArray, process.env.LIST_ID)
+
+    // TODO: MAP LSA SCHEMAS TO EACH TASK
+    // const lsaArray = await assignLsa()
+    // await createSubtasks(lsaArray, process.env.LIST_ID)
     res.send("Success");
   } catch (error) {
     console.error(error)
