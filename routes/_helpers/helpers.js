@@ -21,7 +21,7 @@ async function assignLsa(listId) {
 
   try {
     const response = await axios.get(url, header);
-    console.log(response.data.tasks)
+    console.log(response.data.tasks);
     return response.data.tasks;
   } catch (err) {
     // TODO: Handle errors appropriately
@@ -30,26 +30,28 @@ async function assignLsa(listId) {
 }
 
 /**
- * 
+ *
  * @param {object} task from the reschedule route
  * @returns parses field for times rescheduled and passes it back to update and increment the field by 1
  */
 async function updateTask(task) {
   // console.log(task)
-  const field = task.custom_fields.find(field => field.name === 'Times Rescheduled') || {};
-  const parsedVal = field.value ? parseInt(field.value) : 0
-  console.log(parsedVal)
+  const field =
+    task.custom_fields.find((field) => field.name === "Times Rescheduled") ||
+    {};
+  const parsedVal = field.value ? parseInt(field.value) : 0;
+  console.log(parsedVal);
   const url = `https://api.clickup.com/api/v2/task/${task.id}/field/${field.id}`;
   const body = JSON.stringify({
-    value: parsedVal + 1
-  })
+    value: parsedVal + 1,
+  });
   try {
     const response = await axios.post(url, body, header);
     return response.data;
   } catch (err) {
     // TODO: Handle errors appropriately
     console.error("Error fetching task details:", err.message);
-    console.error(err)
+    console.error(err);
   }
 }
 
@@ -84,5 +86,5 @@ module.exports = {
   getTaskById,
   createSubTask,
   updateTask,
-  assignLsa
+  assignLsa,
 };
