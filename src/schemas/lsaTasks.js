@@ -22,5 +22,4 @@ const lsaTasks = [
   },
 ];
 
-// Concatenating all four arrays into one final export array to send to createSubtasks
 module.exports = lsaTasks;
