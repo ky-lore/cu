@@ -1,3 +1,5 @@
 module.exports = {
-  createSubtasks: require('./createSubtasks')
-}
+  createSubtasks: require("./createSubtasks"),
+  createChecklists: require("./createChecklists"),
+  createChecklistItems: require("./createChecklistItems"),
+};

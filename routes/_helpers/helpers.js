@@ -21,7 +21,7 @@ async function assignLsa(listId) {
 
   try {
     const response = await axios.get(url, header);
-    console.log(response.data.tasks);
+    // console.log(response.data.tasks);
     return response.data.tasks;
   } catch (err) {
     // TODO: Handle errors appropriately
