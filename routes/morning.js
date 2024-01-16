@@ -18,7 +18,7 @@ const morning = {
 // @access  Public
 router.get("/", async (req, res) => {
   try {
-    // await handler(morning);
+    await handler(morning);
     await handleLasTasks();
 
     res.send("Success");
