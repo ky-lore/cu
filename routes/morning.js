@@ -45,24 +45,7 @@ async function handler(time) {
     }))
     .filter((user) => !user.exempt);
 
-  let futuresTaskArray = usersDb
-    .map((user) => ({
-      name: `REMINDER: Check TheFutures.io Requests`,
-      assignees: [user.uid],
-      parent: process.env.DAILYTASK_ID,
-      custom_fields: [
-        {
-          id: process.env.CUSTOMFIELDID,
-          value: process.env.DAILYTASK_SLACKID,
-        },
-      ],
-      exempt: user.exempt,
-      due_date: time.due_date,
-    }))
-    .filter((user) => !user.exempt);
-
     await createSubtasks(taskArray, process.env.LIST_ID);
-    await createSubtasks(futuresTaskArray, process.env.LIST_ID);
 }
 
 module.exports = router;
