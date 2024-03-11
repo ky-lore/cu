@@ -7,11 +7,8 @@ async function ghlOpportunityHandler(task) {
 	const stage = task.status.status;
 
 	const opportunity = await getOpportunityByName(taskName);
-
-	const opportunityExists = opportunity.opportunities[0];
-	if (opportunityExists) {
-		const opportunityId = opportunity.opportunities[0].id;
-
+	const opportunityId = opportunity.opportunities?.[0]?.id;
+	if (opportunityId) {
 		const newStageId = stageIdMapping[stage];
 		if (newStageId) {
 			await updateOpportunityStage(opportunityId, newStageId);
@@ -23,7 +20,7 @@ async function ghlOpportunityHandler(task) {
 	}
 }
 
-async function getOpportunityByName(taskName = "Bam-Capital") {
+async function getOpportunityByName(taskName) {
 	const pipelineId = process.env.LIVE_ACCOUNTS_PIPELINE_ID;
 	const bearerToken = process.env.GHL_API_KEY;
 	const apiUrl = `https://rest.gohighlevel.com/v1/pipelines/${pipelineId}/opportunities?query=${taskName}`;
