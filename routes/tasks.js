@@ -15,8 +15,8 @@ router.post("/task-moved/:taskId", async (req, res) => {
 		const task = await getTaskById(taskId);
 
 		// taskHandler handles the task
-		await taskHandler(task);
 		await ghlOpportunityHandler(task);
+		await taskHandler(task);
 
 		res.send("Success");
 	} catch (error) {
