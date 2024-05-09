@@ -9,11 +9,11 @@ module.exports = [
   },
   {
     accountName: 'Elite Ideas',
-    billingDate: 25
+    billingDate: 9
   },
   {
     accountName: 'Hemopet',
-    billingDate: 18
+    billingDate: 10
   },
   {
     accountName: 'Safe Secure Trust',
