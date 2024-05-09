@@ -1,4 +1,5 @@
 module.exports = {
-  usersDb: require('./usersDb')
+  usersDb: require('./usersDb'),
+  
   // stageIdMappings: require('./stageIdMappings')
 }
