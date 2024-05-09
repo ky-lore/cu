@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = [
   {
     accountName: 'Always a Student',
     billingDate: 1
@@ -31,4 +31,4 @@ module.exports = {
     accountName: 'Luke / Prestige Worldwide',
     billingDate: 25
   }
-}
+]
