@@ -44,10 +44,6 @@ function createTasks(time) {
   createSubtasks(taskArray, process.env.LIST_ID)
 }
 
-function billingCheck() {
-  new Date().getDate()
-}
-
 function scheduler() {
   console.log('scheduled')
   schedule.scheduleJob(morningRule, function () {

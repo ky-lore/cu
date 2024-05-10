@@ -11,11 +11,13 @@ module.exports = [
   },
   {
     accountName: 'Elite Ideas',
-    billingDate: 10
+    billingDate: 25,
+    channelId: ''
   },
   {
     accountName: 'Hemopet',
-    billingDate: 9
+    billingDate: 12,
+    channelId: 'C028VD7P2SH'
   },
   {
     accountName: 'Safe Secure Trust',

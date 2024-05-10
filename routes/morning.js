@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { usersDb } = require("../src/db");
+const { usersDb, billingMapping } = require("../src/db");
 const { datetime } = require("../src/utils");
 const { createSubtasks } = require("../src/controllers");
 const { handleLasTasks } = require("../src/services/index");
@@ -18,7 +18,7 @@ const morning = {
 // @access  Public
 router.get("/", async (req, res) => {
   try {
-    await handler(morning);
+    await handler(billingMapping);
     await handleLasTasks();
 
     res.send("Success");
@@ -28,24 +28,23 @@ router.get("/", async (req, res) => {
   }
 });
 
-async function handler(time) {
-  let taskArray = usersDb
-    .map((user) => ({
-      name: `${user._name.split(" ")[0]} ${time.time} Check In ${time.emoji}`,
-      assignees: [user.uid],
-      parent: process.env.DAILYTASK_ID,
-      custom_fields: [
-        {
-          id: process.env.CUSTOMFIELDID,
-          value: process.env.DAILYTASK_SLACKID,
-        },
-      ],
-      exempt: user.exempt,
-      due_date: time.due_date,
-    }))
-    .filter((user) => !user.exempt);
+async function handler(billingMapping) {
+  const today = new Date().getDate();
+  const lastDayOfMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 0).getDate();
 
-    await createSubtasks(taskArray, process.env.LIST_ID);
+  for (const entry of billingMapping) {
+    const billingDate = entry.billingDate;
+
+    if (today === billingDate - 2 || (today === lastDayOfMonth && (billingDate === 1 || billingDate === 2))) {
+      axios.post('https://hooks.zapier.com/hooks/catch/5506897/3jslvqi/', entry)
+        .then(res => {
+          console.log(res.data)
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    }
+  }
 }
 
 module.exports = router;
