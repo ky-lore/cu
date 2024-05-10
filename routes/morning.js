@@ -4,6 +4,7 @@ const { usersDb, billingMapping } = require("../src/db");
 const { datetime } = require("../src/utils");
 const { createSubtasks } = require("../src/controllers");
 const { handleLasTasks } = require("../src/services/index");
+const zapUrl = process.env.ZAPIER_BILLING_ENDPOINT;
 
 const hours = 3600000;
 
@@ -36,7 +37,7 @@ async function handler(billingMapping) {
     const billingDate = entry.billingDate;
 
     if (today === billingDate - 2 || (today === lastDayOfMonth && (billingDate === 1 || billingDate === 2))) {
-      axios.post('https://hooks.zapier.com/hooks/catch/5506897/3jslvqi/', entry)
+      axios.post(zapUrl, entry)
         .then(res => {
           console.log(res.data)
         })
