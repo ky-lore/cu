@@ -9,7 +9,7 @@ function checkBillingStatus(billingMapping) {
   for (const entry of billingMapping) {
     const billingDate = entry.billingDate;
     
-    if (today === billingDate) {
+    if (today === billingDate - 2 || (today === lastDayOfMonth && (billingDate === 1 || billingDate === 2))) {
       axios.post('https://hooks.zapier.com/hooks/catch/5506897/3jslvqi/', entry)
       .then(res => {
         console.log(res)
@@ -17,8 +17,6 @@ function checkBillingStatus(billingMapping) {
       .catch(err => {
         console.error(err)
       })
-    } else if (today === billingDate - 2 || (today === lastDayOfMonth && (billingDate === 1 || billingDate === 2))) {
-      console.log(entry, '2days');
     }
   }
 }
