@@ -1,8 +1,9 @@
 require('dotenv').config()
-const { usersDb } = require('../db')
+const { usersDb, billingMapping } = require('../db')
 const { datetime } = require('../utils')
 const { createSubtasks } = require('../controllers')
 const schedule = require('node-schedule');
+const axios = require('axios')
 
 // unixtime for hours used in object passed in createTasks(obj) if we need to quickly modify timelines
 const hours = 3600000
@@ -38,6 +39,7 @@ function createTasks(time) {
       exempt: user.exempt
     }))
     .filter(user => !user.exempt)
+
 
   createSubtasks(taskArray, process.env.LIST_ID)
 }
