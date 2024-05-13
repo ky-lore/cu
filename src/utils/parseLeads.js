@@ -22,9 +22,6 @@ module.exports = function parseLeads(task) {
       case 'SOCIAL MAIN POC':
         resultObject.soclLead = value[0].id;
         break;
-      case 'CREATIVE MAIN POC':
-        resultObject.ctvLead = value[0].id;
-        break;
     }
   });
   
