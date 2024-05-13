@@ -8,7 +8,7 @@ const { createSubtasks } = require('../controllers')
  * @param {array} assigneeIds Array of assignee ID's from the task body above parsed by taskHandler
  * @returns {array} taskArray is then sent to createSubtasks.js
  */
-async function handlePrep(task) {
+async function handlePrep(task, assigneeIds) {
   const listId = task.list.id
   const finalArray = globalPrep.map(obj => {
     return {
@@ -16,7 +16,7 @@ async function handlePrep(task) {
       parent: task.id
     }
   })
-
+  console.log(finalArray)
   await createSubtasks(globalPrep, listId)
 }
 
