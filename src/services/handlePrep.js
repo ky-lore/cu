@@ -13,7 +13,8 @@ async function handlePrep(task, assigneeIds) {
   const finalArray = globalPrep.map(obj => {
     return {
       ...obj,
-      parent: task.id
+      parent: task.id,
+      due_date: obj.due_date + datetime()
     }
   })
   console.log(finalArray)
