@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { handleOnboarding, handleStrat, handleDev, handleLive } = require('../services')
+const { handleOnboarding, handleStrat, handleDev, handleLive, handlePreparation } = require('../services')
 
 /**
  * Handles the incoming request body, handles based off of incoming status (later: tags) and returns the final array of tasks to send back to the ClickUp API
@@ -16,6 +16,9 @@ function taskHandler(task) {
   console.log(assigneeIds)
 
   switch (status) {
+    case 'preparation':
+      handlePreparation(task, assigneeIds)
+      break
     case 'onboarding':
       handleOnboarding(task, assigneeIds)
       break
