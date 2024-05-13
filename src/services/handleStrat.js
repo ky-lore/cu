@@ -29,8 +29,6 @@ async function handleStrat(task, assigneeIds) {
       case 'cro':
         assigneesArr = [leads.croLead]
         break
-      case 'ctv':
-        assigneesArr = [leads.ctvLead]
       }
 
     return {
