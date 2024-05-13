@@ -5,4 +5,5 @@ module.exports = {
   handleDailies: require("./handleDailies"),
   handleLive: require("./handleLive"),
   handleLasTasks: require("./handleLasTasks"),
+  handlePreparation: require('./handlePrep')
 };
