@@ -17,7 +17,7 @@ async function handlePrep(task, assigneeIds) {
     }
   })
   console.log(finalArray)
-  await createSubtasks(globalPrep, listId)
+  await createSubtasks(finalArray, listId)
 }
 
 module.exports = handlePrep
