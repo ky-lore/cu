@@ -19,6 +19,7 @@ async function handleOnboarding(task, assigneeIds) {
       parent: task.id
     }
   })
+  console.log(taskArray)
   await createSubtasks(taskArray, listId)
 }
 
