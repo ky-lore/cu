@@ -17,7 +17,7 @@ function taskHandler(task) {
 
   switch (status) {
     case 'preparation':
-      handlePreparation(task, assigneeIds)
+      handlePreparation(task)
       break
     case 'onboarding':
       handleOnboarding(task, assigneeIds)
