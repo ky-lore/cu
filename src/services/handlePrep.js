@@ -10,6 +10,12 @@ const { createSubtasks } = require('../controllers')
  */
 async function handlePrep(task) {
   const listId = task.list.id
+  const finalArray = globalPrep.map(obj => {
+    return {
+      ...obj,
+      parent: task.id
+    }
+  })
 
   await createSubtasks(globalPrep, listId)
 }
