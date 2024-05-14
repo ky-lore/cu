@@ -1,5 +1,6 @@
 const { globalOnboarding } = require('../schemas')
-const { datetime, adminIds } = require('../utils')
+const { datetime, adminIds, parseLeads, parseTags } = require('../utils')
+
 const { createSubtasks } = require('../controllers')
 
 /**
@@ -22,7 +23,11 @@ async function handleOnboarding(task, assigneeIds) {
   // })
   // console.log(taskArray)
   // await createSubtasks(taskArray, listId)
-  console.log(task, assigneeIds)
+  const leads = parseLeads(task)
+  const parsedTags = parseTags(task.tags)
+  console.log(task, assigneeIds, leads, parsedTags)
+
+  
 }
 
 module.exports = handleOnboarding
