@@ -11,6 +11,7 @@ module.exports = function parseLeads(task) {
   customFields.forEach(customField => {
     const name = customField.name;
     const value = customField.value;
+    console.log(value)
   
     switch (name) {
       case 'CRO MAIN POC':
