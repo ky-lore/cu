@@ -67,7 +67,7 @@ async function handleOnboarding(task, assigneeIds) {
     }
   })
 
-  createSubtasks(finalArr, task.list.id)
+  await createSubtasks(finalArr, task.list.id)
 }
 
 module.exports = handleOnboarding
