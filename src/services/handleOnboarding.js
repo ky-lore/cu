@@ -68,7 +68,7 @@ async function handleOnboarding(task, assigneeIds) {
   })
 
   console.log(testArr)
-  console.log(task, assigneeIds)
+  console.log(task, leads, parsedTags)
 }
 
 module.exports = handleOnboarding
