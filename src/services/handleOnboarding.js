@@ -8,19 +8,21 @@ const { createSubtasks } = require('../controllers')
  * @param {array} assigneeIds Array of assignee ID's from the task body above parsed by taskHandler
  * @returns {array} taskArray is then sent to createSubtasks.js
  */
+
 async function handleOnboarding(task, assigneeIds) {
-  let listId = task.list.id
-  let taskArray = globalOnboarding.map(obj => {
-    return {
-      ...obj,
-      assignees: obj.leads ? adminIds : assigneeIds,
-      due_date: obj.due_date + datetime(),
-      start_date: datetime(),
-      parent: task.id
-    }
-  })
-  console.log(taskArray)
-  await createSubtasks(taskArray, listId)
+  // let listId = task.list.id
+  // let taskArray = globalOnboarding.map(obj => {
+  //   return {
+  //     ...obj,
+  //     assignees: obj.leads ? adminIds : assigneeIds,
+  //     due_date: obj.due_date + datetime(),
+  //     start_date: datetime(),
+  //     parent: task.id
+  //   }
+  // })
+  // console.log(taskArray)
+  // await createSubtasks(taskArray, listId)
+  console.log(task, assigneeIds)
 }
 
 module.exports = handleOnboarding

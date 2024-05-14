@@ -3,61 +3,64 @@
 const hours = 3600000
 const days = 86400000
 
-// TODO: REFACTOR AS SEPARATE ARRAYS FOR EACH DEPT. AND CONCAT TO EXPORT, REFACTOR due_date TO ABOVE UNIXTIME VALUES
-// see: globalDevTasks
+const status = 'onboarding'
+
+const createTask = (name, due_date, flag) => ({
+  name,
+  due_date,
+  flag,
+  status
+})
+
+
+const gblTasks = [
+  { name: "Schedule external kickoff meet" },
+  { name: "Schedule post-kickoff internal meet" },
+].map(task => createTask(task.name, 1 * days, 'global'))
+
+const srchEcomTasks = [
+  { name: "Google Merchant Center setup" },
+  { name: "Ad account setup" },
+  { name: "GA4 setup" },
+  { name: "Google Tag Manager setup" },
+  { name: "COGS list and analysis" }
+].map(task => createTask(task.name, 2 * days, 'srchEcom'))
+
+const srchLeadgenTasks = [
+  { name: "Ad account setup" },
+  { name: "GA4 setup" },
+  { name: "Google Tag Manager setup" }
+].map(task => createTask(task.name, 2 * days, 'srchLeadgen'))
+
+const socEcomTasks = [
+  { name: "Shopify access" },
+  { name: "Business manager" },
+  { name: "Ad account" },
+  { name: "Meta page setup" },
+].map(task => createTask(task.name, 2 * days, 'socEcom'))
+
+const socLeadgenTasks = [
+  { name: "Business manager" },
+  { name: "Ad account setup" },
+  { name: "Meta page setup" }
+].map(task => createTask(task.name, 2 * days, 'socLeadgen'))
+
+const devTasks = [
+  { name: "Domain access" },
+  { name: "Website/hosting access" },
+  { name: "GHL creation if nec." },
+  { name: "Brand Guide" },
+  { name: "Reference Pages" },
+  { name: "CRM access (if not GHL)" },
+  { name: "3rd Party Integration Access/Fulfillment" },
+  { name: "Tracking codes/pixels" },
+].map(task => createTask(task.name, 2 * days, 'dev'))
+
 module.exports = [
-  {
-    name: "Confirm Onboarding Form",
-    status: "onboarding",
-    due_date: 28800000,
-    leads: true
-  },
-  {
-    name: "Pin live onboarding doc to INTERNAL Slack channel",
-    status: "onboarding",
-    due_date: 28800000,
-    leads: true
-  },
-  {
-    name: "Introduce self to client in EXTERNAL Slack channel",
-    status: "onboarding",
-    due_date: 28800000,
-    leads: true
-  },
-  {
-    name: "Assign all members to master ClickUp card",
-    status: "onboarding",
-    due_date: 28800000,
-    leads: true
-  },
-  {
-    name: "Assign main POCs to custom fields in ClickUp card",
-    status: "onboarding",
-    due_date: 28800000,
-    leads: true
-  },
-  {
-    name: "Schedule leads kickoff call with client",
-    status: "onboarding",
-    due_date: 259200000,
-    leads: true
-  },
-  {
-    name: "SEARCH: Confirm asset connections & logins",
-    status: "onboarding",
-    due_date: 259200000,
-    leads: true
-  },
-  {
-    name: "SOCIAL: Confirm asset connections & logins",
-    status: "onboarding",
-    due_date: 259200000,
-    leads: true
-  },
-  {
-    name: "CRO: Confirm asset connections & logins",
-    status: "onboarding",
-    due_date: 259200000,
-    leads: true
-  }
+  ...gblTasks,
+  ...srchEcomTasks,
+  ...srchLeadgenTasks,
+  ...socEcomTasks,
+  ...srchLeadgenTasks,
+  ...devTasks
 ]
