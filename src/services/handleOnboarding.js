@@ -70,6 +70,4 @@ async function handleOnboarding(task, assigneeIds) {
   console.log(testArr)
 }
 
-handleOnboarding()
-
 module.exports = handleOnboarding
