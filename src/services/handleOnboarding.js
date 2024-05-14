@@ -21,53 +21,54 @@ async function handleOnboarding(task, assigneeIds) {
 
   // console.log(testLeads, testTags)
 
-  var testArr = globalOnboarding.map(task => {
+  var testArr = globalOnboarding.map(taskObj => {
     return {
-      ...task,
-      due_date: task.due_date + datetime(),
+      ...taskObj,
+      due_date: taskObj.due_date + datetime(),
       start_date: datetime(),
       parent: 123
     }
-  }).filter(task => {
-    return task.flags.every(element => parsedTags.includes(element))
-  }).map(task => {
-    switch(task.flags.join('-')) {
+  }).filter(taskObj => {
+    return taskObj.flags.every(element => parsedTags.includes(element))
+  }).map(taskObj => {
+    switch(taskObj.flags.join('-')) {
       case 'social-ecom':
         return {
-          ...task,
+          ...taskObj,
           assignees: leads.soclLead
         }
         break
       case 'social-leadgen':
         return {
-          ...task,
+          ...taskObj,
           assignees: leads.soclLead
         }
         break
       case 'google-ecom':
         return {
-          ...task,
+          ...taskObj,
           assignees: leads.srchLead
         }
         break
       case 'google-leadgen':
         return {
-          ...task,
+          ...taskObj,
           assignees: leads.srchLead
         }
         break
       case 'dev':
         return {
-          ...task,
+          ...taskObj,
           assignees: leads.croLead
         }
         break
       default:
-        return task
+        return taskObj
     }
   })
 
   console.log(testArr)
+  console.log(task, assigneeIds)
 }
 
 module.exports = handleOnboarding
