@@ -16,8 +16,7 @@ const { createSubtasks } = require('../controllers')
 
 async function handleOnboarding(task, assigneeIds) {
 
-  const leads = parseLeads(task)
-  const parsedTags = parseTags(task.tags)
+  console.log(task)
 
   // console.log(testLeads, testTags)
 
