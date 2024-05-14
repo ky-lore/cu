@@ -21,12 +21,12 @@ async function handleOnboarding(task, assigneeIds) {
 
   // console.log(testLeads, testTags)
 
-  var finalArr, task.list.id = globalOnboarding.map(taskObj => {
+  var finalArr = globalOnboarding.map(taskObj => {
     return {
       ...taskObj,
       due_date: taskObj.due_date + datetime(),
       start_date: datetime(),
-      parent: 123
+      parent: taskObj.id
     }
   }).filter(taskObj => {
     return taskObj.flags.every(element => parsedTags.includes(element))
