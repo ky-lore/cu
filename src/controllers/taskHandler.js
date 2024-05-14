@@ -8,7 +8,6 @@ const { handleOnboarding, handleStrat, handleDev, handleLive, handlePreparation 
  * @returns {array} final array of tasks after handling
  */
 function taskHandler(task) {
-  console.log(task)
   const { status } = task.status
 
   // Extract the ids of members assigned to the task - we may not need this just yet but will leave it in for future smart cross-checks
