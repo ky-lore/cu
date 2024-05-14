@@ -21,7 +21,7 @@ async function handleOnboarding(task, assigneeIds) {
 
   // console.log(testLeads, testTags)
 
-  var testArr = globalOnboarding.map(taskObj => {
+  var finalArr, task.list.id = globalOnboarding.map(taskObj => {
     return {
       ...taskObj,
       due_date: taskObj.due_date + datetime(),
@@ -67,8 +67,7 @@ async function handleOnboarding(task, assigneeIds) {
     }
   })
 
-  console.log(testArr)
-  console.log(task, leads, parsedTags)
+  createSubtasks(finalArr, task.list.id)
 }
 
 module.exports = handleOnboarding
