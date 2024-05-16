@@ -3,7 +3,7 @@ const { datetime, adminIds, parseLeads, parseTags } = require('../utils')
 
 const { createSubtasks } = require('../controllers')
 
-// const testLeads = { croLead: 5997125, srchLead: 82219496, soclLead: 82242423 }
+const leads = { croLead: 5997125, srchLead: 82219496, soclLead: 82242423 }
 
 // const testTags = ['social', 'leadgen', 'ecom', 'dev', 'google']
 
@@ -21,6 +21,7 @@ async function handleOnboarding(task, assigneeIds) {
   // console.log(testLeads, testTags)
 
   const parsedTags = parseTags(task.tags)
+  // const leads = parseLeads(task.custom)
 
   var finalArr = globalOnboarding.map(taskObj => {
     return {
