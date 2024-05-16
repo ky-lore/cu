@@ -11,7 +11,7 @@ router.post("/:taskId", async (req, res) => {
   try {
     // Retrieve the details of the task that was moved using the taskId
     const task = await getTaskById(taskId);
-    console.log(task)
+    // console.log(task)
     res.send("Success");
   } catch (error) {
     console.error(error)
