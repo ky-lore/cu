@@ -16,12 +16,11 @@ const leads = { croLead: 5997125, srchLead: 82219496, soclLead: 82242423 }
 
 async function handleOnboarding(task, assigneeIds) {
 
-  // console.log(task)
+  console.log(task)
 
   // console.log(testLeads, testTags)
 
   const parsedTags = parseTags(task.tags)
-  console.log(task.custom_fields)
   // const leads = parseLeads(task.custom)
 
   var finalArr = globalOnboarding.map(taskObj => {
