@@ -15,7 +15,7 @@ async function createSubtasks(taskArray, listId) {
 
       try {
         const res = await axios.post(url, JSON.stringify(taskObj), header);
-        // console.log(res)
+        console.log(taskObj)
         console.log("Subtask created successfully:", taskObj.name);
         return res.data;
       } catch (err) {
