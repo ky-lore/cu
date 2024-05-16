@@ -20,7 +20,7 @@ async function handleOnboarding(task, assigneeIds) {
 
   // console.log(testLeads, testTags)
 
-  const parsedTags = parseTags(task.tags)
+  const parsedTags = ['social', 'leadgen', 'ecom', 'dev', 'google']
   // const leads = parseLeads(task.custom)
 
   const finalArr = globalOnboarding.map(taskObj => {
