@@ -30,11 +30,13 @@ router.get("/", async (req, res) => {
 });
 
 async function handler(billingMapping) {
+  console.log('BILLING')
   const today = new Date().getDate();
   const lastDayOfMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 0).getDate();
 
   for (const entry of billingMapping) {
     const billingDate = entry.billingDate;
+    console.log(entry)
 
     if (today === billingDate - 2 || (today === lastDayOfMonth && (billingDate === 1 || billingDate === 2))) {
       axios.post(zapUrl, entry)
