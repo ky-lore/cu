@@ -69,7 +69,10 @@ async function handleOnboarding(task, assigneeIds) {
     }
   })
 
-  console.error(task, finalArr)
+  console.error(task, finalArr.map(obj => {
+    ...obj,
+    DEBUGGING: 'DEBUGGING'
+  }))
   await createSubtasks(finalArr, task.list.id)
 }
 
