@@ -26,7 +26,7 @@ async function handleOnboarding(task, assigneeIds) {
   const finalArr = globalOnboarding.map(taskObj => {
     return {
       ...taskObj,
-      name: name + task.name
+      name: name + task.name,
       due_date: taskObj.due_date + datetime(),
       start_date: datetime(),
       parent: task.id
