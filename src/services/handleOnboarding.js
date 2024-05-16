@@ -37,31 +37,31 @@ async function handleOnboarding(task, assigneeIds) {
       case 'social-ecom':
         return {
           ...taskObj,
-          assignees: leads.soclLead
+          assignees: [leads.soclLead]
         }
         break
       case 'social-leadgen':
         return {
           ...taskObj,
-          assignees: leads.soclLead
+          assignees: [leads.soclLead]
         }
         break
       case 'google-ecom':
         return {
           ...taskObj,
-          assignees: leads.srchLead
+          assignees: [leads.srchLead]
         }
         break
       case 'google-leadgen':
         return {
           ...taskObj,
-          assignees: leads.srchLead
+          assignees: [leads.srchLead]
         }
         break
       case 'dev':
         return {
           ...taskObj,
-          assignees: leads.croLead
+          assignees: [leads.croLead]
         }
         break
       default:
@@ -69,12 +69,6 @@ async function handleOnboarding(task, assigneeIds) {
     }
   })
 
-  console.error(task, finalArr.map(obj => {
-    return {
-      ...obj,
-      DEBUGGING: 'DEBUGGING'
-    }
-  }))
   await createSubtasks(finalArr, task.list.id)
 }
 
