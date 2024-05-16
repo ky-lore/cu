@@ -69,6 +69,7 @@ async function handleOnboarding(task, assigneeIds) {
     }
   })
 
+  console.error(task, finalArr)
   await createSubtasks(finalArr, task.list.id)
 }
 
