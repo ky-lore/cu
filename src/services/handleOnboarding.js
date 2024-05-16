@@ -23,7 +23,7 @@ async function handleOnboarding(task, assigneeIds) {
   const parsedTags = parseTags(task.tags)
   // const leads = parseLeads(task.custom)
 
-  var finalArr = globalOnboarding.map(taskObj => {
+  const finalArr = globalOnboarding.map(taskObj => {
     return {
       ...taskObj,
       due_date: taskObj.due_date + datetime(),
