@@ -33,7 +33,7 @@ async function handleOnboarding(task, assigneeIds) {
   }).filter(taskObj => {
     return taskObj.flags.every(element => parsedTags.includes(element))
   }).map(taskObj => {
-    switch(taskObj.flags.join('-')) {
+    switch (taskObj.flags.join('-')) {
       case 'social-ecom':
         return {
           ...taskObj,
@@ -70,8 +70,10 @@ async function handleOnboarding(task, assigneeIds) {
   })
 
   console.error(task, finalArr.map(obj => {
-    ...obj,
-    DEBUGGING: 'DEBUGGING'
+    return {
+      ...obj,
+      DEBUGGING: 'DEBUGGING'
+    }
   }))
   await createSubtasks(finalArr, task.list.id)
 }
