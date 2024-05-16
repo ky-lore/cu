@@ -28,7 +28,7 @@ async function handleOnboarding(task, assigneeIds) {
       ...taskObj,
       due_date: taskObj.due_date + datetime(),
       start_date: datetime(),
-      parent: taskObj.id
+      parent: task.id
     }
   }).filter(taskObj => {
     return taskObj.flags.every(element => parsedTags.includes(element))
