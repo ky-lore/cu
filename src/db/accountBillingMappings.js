@@ -26,7 +26,7 @@ module.exports = [
   },
   {
     accountName: 'Dash Athletics',
-    billingDate: 22,
+    billingDate: 21,
     channelId: 'C06L1JD587Q'
   },
   {
