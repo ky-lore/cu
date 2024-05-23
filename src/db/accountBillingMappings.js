@@ -12,7 +12,7 @@ module.exports = [
   {
     accountName: 'Elite Ideas',
     billingDate: 25,
-    channelId: ''
+    channelId: 'C90ISDJ9UF'
   },
   {
     accountName: 'Hemopet',
