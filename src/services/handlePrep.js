@@ -14,7 +14,8 @@ async function handlePrep(task, assigneeIds) {
     return {
       ...obj,
       parent: task.id,
-      due_date: obj.due_date + datetime()
+      due_date: obj.due_date + datetime(),
+      assignees: [44588182]
     }
   })
   console.log(finalArray)
