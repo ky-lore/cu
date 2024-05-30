@@ -54,6 +54,7 @@ const devTasks = [
   { name: "CRM access (if not GHL)" },
   { name: "3rd Party Integration Access/Fulfillment" },
   { name: "Tracking codes/pixels" },
+  { name: "Remove ALL third party scripts" },
 ].map(task => createTask(task.name, 2 * days, ['dev']))
 
 module.exports = [
