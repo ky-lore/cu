@@ -18,6 +18,13 @@ async function handleOnboarding(task, assigneeIds) {
 
   console.log(task)
 
+  try {
+    const res = await axios.post('https://backend.leadconnectorhq.com/hooks/abicfvSRunSz4oHmp5lQ/webhook-trigger/d136ef38-72ca-412d-87ca-4a5161e8f186', { taskData: task });
+    console.log(res.data);
+  } catch (err) {
+    console.error('Axios error:', err)
+  }
+
   // console.log(testLeads, testTags)
 
   const parsedTags = ['social', 'leadgen', 'ecom', 'dev', 'google']
