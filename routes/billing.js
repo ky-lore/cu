@@ -3,6 +3,7 @@ const router = express.Router();
 const { usersDb, billingMapping } = require("../src/db");
 const { datetime } = require("../src/utils");
 const zapUrl = process.env.ZAPIER_BILLING_ENDPOINT;
+const axios = require('axios')
 
 async function handler(billingMapping) {
   console.log('BILLING')
