@@ -16,8 +16,9 @@ module.exports = [
   },
   {
     accountName: 'Hemopet',
-    billingDate: 10,
-    channelId: 'C028VD7P2SH'
+    billingDate: 12,
+    channelId: 'C028VD7P2SH',
+    poc: 'U06BQHXBY02'
   },
   {
     accountName: 'Safe Secure Trust',
