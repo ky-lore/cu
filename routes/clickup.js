@@ -13,6 +13,8 @@ router.post("/", async (req, res) => {
     console.log(data.custom_fields.forEach(field => {
       console.log(field)
     }));
+    console.log(req.query)
+    console.log(req.params)
     res.send('Data received successfully');
   } catch (error) {
     console.error(error);
