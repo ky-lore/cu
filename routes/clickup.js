@@ -10,9 +10,6 @@ async function handler() {
 router.post("/", async (req, res) => {
   try {
     const data = req.body;
-    console.log(data.custom_fields.forEach(field => {
-      console.log(field)
-    }));
     console.log(req.query)
     console.log(req.params)
     res.send('Data received successfully');
