@@ -23,7 +23,7 @@ module.exports = [
     accountName: 'Hemopet',
     billingDate: 12,
     channelId: 'C028VD7P2SH',
-    poc: ids.michael
+    poc: ids.sandra
   },
   {
     accountName: 'Safe Secure Trust',
@@ -74,6 +74,12 @@ module.exports = [
     poc: ids.michael
   },
   {
+    accountName: 'Nim Stant Personal Brand',
+    billingDate: 14,
+    channelId: 'C0764G2C9NC',
+    poc: ids.michael
+  },
+  {
     accountName: 'Nations Insurance',
     billingDate: 17,
     channelId: 'C073Y5WA15K',
@@ -81,8 +87,14 @@ module.exports = [
   },
   {
     accountName: 'Energyscape Renewables',
-    billingDate: 17,
+    billingDate: 21,
     channelId: 'C0747RQFXFZ',
+    poc: ids.abby
+  },
+  {
+    accountName: 'Authentic / Danny Pessy',
+    billingDate: 8,
+    channelId: 'C05HCNAMAHX',
     poc: ids.abby
   },
 ]
