@@ -20,6 +20,11 @@ module.exports = [
     channelId: 'C028VD7P2SH'
   },
   {
+    accountName: 'Hemopet 2',
+    billingDate: 12,
+    channelId: 'C028VD7P2SH'
+  },
+  {
     accountName: 'Safe Secure Trust',
     billingDate: 17,
     channelId: 'C06NZJKC2JW'
