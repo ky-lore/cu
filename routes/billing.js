@@ -17,7 +17,10 @@ async function handler(billingMapping) {
     console.log(entry)
     
     if (today === billingDate - 2 || (today === lastDayOfMonth && (billingDate === 1 || billingDate === 2))) {
-      axios.post(zapUrl, entry)
+      axios.post(zapUrl, {
+        ...entry,
+        month: month
+      })
       .then(res => {
         console.log(res.data)
         console.log('matchfound')
