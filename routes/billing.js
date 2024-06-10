@@ -19,6 +19,7 @@ async function handler(billingMapping) {
       axios.post(zapUrl, entry)
       .then(res => {
         console.log(res.data)
+        console.log('matchfound')
       })
       .catch(err => {
         console.error(err)
