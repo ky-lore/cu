@@ -1,4 +1,4 @@
-const ids = require('./ids')
+const ids = require('./slackIds')
 
 module.exports = [
   {
