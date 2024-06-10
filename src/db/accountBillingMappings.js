@@ -16,12 +16,7 @@ module.exports = [
   },
   {
     accountName: 'Hemopet',
-    billingDate: 12,
-    channelId: 'C028VD7P2SH'
-  },
-  {
-    accountName: 'Hemopet 2',
-    billingDate: 12,
+    billingDate: 10,
     channelId: 'C028VD7P2SH'
   },
   {
@@ -43,5 +38,11 @@ module.exports = [
     accountName: 'Luke / Prestige Worldwide',
     billingDate: 25,
     channelId: 'C02DP8560HK'
+  },
+  {
+    accountName: 'devtesting',
+    billingDate: 12,
+    channelId: 'C02DP8560HK',
+    poc: 'U026BPQ6ASZ'
   }
 ]
