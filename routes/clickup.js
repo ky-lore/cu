@@ -1,20 +1,24 @@
 const express = require("express");
 const router = express.Router();
-const zapUrl = process.env.ZAPIER_CU_ENDPOINT;
 const axios = require('axios');
-
-async function handler() {
-
-}
+const zapUrl = process.env.ZAPIER_CU_ENDPOINT;
 
 router.post("/", async (req, res) => {
   try {
     const data = req.body;
-    console.log(req.query)
-    console.log(req.params)
-    res.send('Data received successfully');
+    const queryData = req.query; // Extract query parameters
+
+    console.log('Received data:', data);
+    console.log('Received query parameters:', queryData);
+
+    // Make a POST request to the external endpoint with query parameters
+    const response = await axios.post(zapUrl, queryData);
+
+    console.log('Response from external endpoint:', response.data);
+
+    res.send('Data received and external request sent successfully');
   } catch (error) {
-    console.error(error);
+    console.error('Error:', error);
     res.status(500).send("Internal Server Error");
   }
 });
