@@ -10,7 +10,9 @@ async function handler() {
 router.post("/", async (req, res) => {
   try {
     const data = req.body;
-    console.log(data);
+    console.log(data.custom_fields.forEach(field => {
+      console.log(field)
+    }));
     res.send('Data received successfully');
   } catch (error) {
     console.error(error);
