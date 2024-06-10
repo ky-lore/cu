@@ -16,8 +16,8 @@ module.exports = [
   {
     accountName: 'Elite Ideas',
     billingDate: 25,
-    channelId: 'C90ISDJ9UF',
-    poc: ids.abby
+    channelId: 'C070XGK3S8J',
+    poc: ids.sandra
   },
   {
     accountName: 'Hemopet',
@@ -33,7 +33,7 @@ module.exports = [
   },
   {
     accountName: 'Dash Athletics',
-    billingDate: 21,
+    billingDate: 22,
     channelId: 'C06L1JD587Q',
     poc: ids.abby
   },
@@ -42,12 +42,6 @@ module.exports = [
     billingDate: 26,
     channelId: 'C02KBSHD3CL',
     poc: ids.michael
-  },
-  {
-    accountName: 'Cordae NY',
-    billingDate: 30,
-    channelId: 'C028YKZ98F5',
-    poc: ids.abby
   },
   {
     accountName: 'Titanium Solar',
@@ -75,7 +69,7 @@ module.exports = [
   },
   {
     accountName: 'Nim Stant Personal Brand',
-    billingDate: 14,
+    billingDate: 25,
     channelId: 'C0764G2C9NC',
     poc: ids.michael
   },
@@ -95,6 +89,12 @@ module.exports = [
     accountName: 'Authentic / Danny Pessy',
     billingDate: 8,
     channelId: 'C05HCNAMAHX',
+    poc: ids.michael
+  },
+  {
+    accountName: 'Smoky Bombs',
+    billingDate: 30,
+    channelId: 'C03JMMRPYK0',
     poc: ids.abby
   },
 ]
