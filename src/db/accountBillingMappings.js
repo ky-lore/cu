@@ -39,11 +39,5 @@ module.exports = [
     accountName: 'Luke / Prestige Worldwide',
     billingDate: 25,
     channelId: 'C02DP8560HK'
-  },
-  {
-    accountName: 'devtesting',
-    billingDate: 12,
-    channelId: 'C02DP8560HK',
-    poc: 'U026BPQ6ASZ'
   }
 ]
