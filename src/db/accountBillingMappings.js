@@ -9,7 +9,7 @@ module.exports = [
   },
   {
     accountName: 'BAM Capital',
-    billingDate: 12,
+    billingDate: 1,
     channelId: 'C03KLA3N0TZ',
     poc: ids.abby
   },
@@ -96,5 +96,11 @@ module.exports = [
     billingDate: 30,
     channelId: 'C03JMMRPYK0',
     poc: ids.abby
+  },
+  {
+    accountName: 'internal-thesoftwarehub',
+    billingDate: 16,
+    channelId: 'C04PDBRNWAE',
+    poc: ids.kyle
   },
 ]
