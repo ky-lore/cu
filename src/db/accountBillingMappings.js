@@ -103,4 +103,10 @@ module.exports = [
     channelId: 'C04PDBRNWAE',
     poc: ids.kyle
   },
+  {
+    accountName: 'social-stop-restoration-albuquerque',
+    billingDate: 18,
+    channelId: 'C078NL9ERQA',
+    poc: 'U06BQHXBY02'
+  },
 ]
