@@ -109,4 +109,10 @@ module.exports = [
     channelId: 'C078NL9ERQA',
     poc: 'U06BQHXBY02'
   },
+  {
+    accountName: 'google-kmd89',
+    billingDate: 1,
+    channelId: 'C04QNSJG7KM',
+    poc: 'U04D5CCRS30'
+  },
 ]
