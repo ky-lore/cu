@@ -121,4 +121,10 @@ module.exports = [
     channelId: 'C078TTJGUKH',
     poc: 'U04D5CCRS30'
   },
+  {
+    accountName: 'social-all-in-nation',
+    billingDate: 21,
+    channelId: 'C079XEJQQ6L',
+    poc: 'U06BQHXBY02'
+  },
 ]
