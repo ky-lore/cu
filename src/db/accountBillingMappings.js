@@ -115,4 +115,10 @@ module.exports = [
     channelId: 'C04QNSJG7KM',
     poc: 'U04D5CCRS30'
   },
+  {
+    accountName: 'google-dgk-home-solutions',
+    billingDate: 21,
+    channelId: 'C078TTJGUKH',
+    poc: 'U04D5CCRS30'
+  },
 ]
