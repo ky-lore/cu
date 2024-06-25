@@ -127,4 +127,10 @@ module.exports = [
     channelId: 'C079XEJQQ6L',
     poc: 'U06BQHXBY02'
   },
+  {
+    accountName: 'social-proferty',
+    billingDate: 25,
+    channelId: 'C079R2QSW59',
+    poc: 'U06BQHXBY02'
+  },
 ]
