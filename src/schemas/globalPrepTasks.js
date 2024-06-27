@@ -27,7 +27,12 @@ module.exports = [
     due_date: 1 * days
   },
   {
-    name: "Send Typeforms",
+    name: "Assign Typeform tags",
+    status: "preparation",
+    due_date: 1 * days
+  },
+  {
+    name: "Assign client POC emails",
     status: "preparation",
     due_date: 1 * days
   },
