@@ -9,7 +9,7 @@ module.exports = [
   },
   {
     accountName: 'BAM Capital',
-    billingDate: 1,
+    billingDate: 11,
     channelId: 'C03KLA3N0TZ',
     poc: ids.abby
   },
@@ -132,5 +132,11 @@ module.exports = [
     billingDate: 25,
     channelId: 'C079R2QSW59',
     poc: 'U06BQHXBY02'
+  },
+  {
+    accountName: 'google-social-marky-ai',
+    billingDate: 3,
+    channelId: 'C075WNA1HMM',
+    poc: ids.sandra
   },
 ]
