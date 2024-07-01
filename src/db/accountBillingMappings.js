@@ -110,6 +110,12 @@ module.exports = [
     poc: 'U06BQHXBY02'
   },
   {
+    accountName: 'google-total-restore',
+    billingDate: 8,
+    channelId: 'C071UVBP8DB',
+    poc: 'U06BQHXBY02'
+  },
+  {
     accountName: 'google-kmd89',
     billingDate: 1,
     channelId: 'C04QNSJG7KM',
