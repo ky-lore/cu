@@ -3,13 +3,13 @@ const ids = require('./slackIds')
 module.exports = [
   {
     accountName: 'Always a Student',
-    billingDate: 1,
+    billingDate: 3,
     channelId: 'C046M7NUW3H',
     poc: ids.sandra
   },
   {
     accountName: 'BAM Capital',
-    billingDate: 1,
+    billingDate: 3,
     channelId: 'C03KLA3N0TZ',
     poc: ids.abby
   },
@@ -45,13 +45,13 @@ module.exports = [
   },
   {
     accountName: 'Titanium Solar',
-    billingDate: 1,
+    billingDate: 3,
     channelId: 'C0389NX5CJY',
     poc: ids.danny
   },
   {
     accountName: 'KMD89',
-    billingDate: 1,
+    billingDate: 3,
     channelId: 'C028YKZ98F5',
     poc: ids.abby
   },
@@ -111,7 +111,7 @@ module.exports = [
   },
   {
     accountName: 'google-kmd89',
-    billingDate: 1,
+    billingDate: 3,
     channelId: 'C04QNSJG7KM',
     poc: 'U04D5CCRS30'
   },
