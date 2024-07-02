@@ -2,6 +2,9 @@ const { globalStrat } = require('../schemas')
 const { datetime, adminIds, parseLeads } = require('../utils')
 const { createSubtasks } = require('../controllers')
 
+
+const leads = { croLead: 5997125, srchLead: 44588182, soclLead: 82242423 }
+
 /**
  * 
  * @param {object} task The original request object sent from CU passed in from our route
@@ -9,7 +12,6 @@ const { createSubtasks } = require('../controllers')
  * @returns {array} taskArray is then sent to createSubtasks.js
  */
 async function handleStrat(task, assigneeIds) {
-  const leads = parseLeads(task)
   const listId = task.list.id
   let assigneesArr = []
 
