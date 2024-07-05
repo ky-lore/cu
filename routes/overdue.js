@@ -13,12 +13,12 @@ async function handler() {
   const timestamp = startOfDay.getTime();
   let taskStr = ''
 
-  const url = `https://api.clickup.com/api/v2/list/${listId}/task?due_date_lt=${timestamp}`;
+  const url = `https://api.clickup.com/api/v2/list/${listId}/task?due_date_lt=${timestamp}&subtasks=true&order_by=due_date`;
   await axios.get(url, header)
   .then((res) => {
     const tasks = res.data.tasks;
     tasks.forEach(task => {
-      taskStr += `Task Name: ${task.name}\n`;
+      taskStr += `*Task:* ${task.name}\n*Due Date:* ${parseInt(task.due_date)}\n*Assignee:* ${task.assignees[0].username}\n_______`;
     })
     console.log(taskStr)
     axios.post(zapUrl, {
