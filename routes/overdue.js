@@ -5,6 +5,15 @@ const zapUrl = process.env.ZAPIER_OVERDUE_ENDPOINT;
 const axios = require('axios')
 const header = require('./_resources/header')
 
+function formatDate(timestampInMs) {
+  if (typeof timestampInMs !== 'number' || isNaN(timestampInMs)) {
+    throw new Error('Invalid');
+  }
+
+  const dateObject = new Date(timestampInMs);
+  return dateObject.toLocaleDateString('en-US');
+}
+
 async function handler() {
   console.log('Overdue OK')
   const listId = '900901670366';
@@ -18,7 +27,7 @@ async function handler() {
   .then((res) => {
     const tasks = res.data.tasks;
     tasks.forEach(task => {
-      taskStr += `*Task:* ${task.name}\n*Due Date:* ${parseInt(task.due_date)}\n*Assignee:* ${task.assignees[0].username}\n_______`;
+      taskStr += `*Task:* ${task.name}\n*Due Date:* ${formatDate(parseInt(task.due_date))}\n*Assignee:* ${task.assignees[0].username}\n*Link*: https://app.clickup.com/t/${task.id}\n_______\n`;
     })
     console.log(taskStr)
     axios.post(zapUrl, {
