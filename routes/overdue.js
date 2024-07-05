@@ -8,8 +8,11 @@ const header = require('./_resources/header')
 async function handler() {
   console.log('Overdue OK')
   const listId = '900901670366';
-  const currentTimestamp = Math.floor(Date.now() / 1000);
-  const url = `https://api.clickup.com/api/v2/list/${listId}/task?due_date_lt=${currentTimestamp}`;
+  const startOfDay = new Date();
+  startOfDay.setHours(0, 0, 0, 0);
+  const timestamp = startOfDay.getTime();
+
+  const url = `https://api.clickup.com/api/v2/list/${listId}/task?due_date_lt=${timestamp}`;
   await axios.get(url, header)
   .then((res) => {
     const tasks = res.data.tasks;
