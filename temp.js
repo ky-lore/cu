@@ -1,1 +1,4 @@
-console.log(Math.floor(Date.now() / 1000))
+const startOfDay = new Date();
+startOfDay.setHours(0, 0, 0, 0);
+const timestamp = startOfDay.getTime();
+console.log(timestamp)

@@ -11,19 +11,25 @@ async function handler() {
   const startOfDay = new Date();
   startOfDay.setHours(0, 0, 0, 0);
   const timestamp = startOfDay.getTime();
+  const taskStr = ''
 
   const url = `https://api.clickup.com/api/v2/list/${listId}/task?due_date_lt=${timestamp}`;
   await axios.get(url, header)
   .then((res) => {
     const tasks = res.data.tasks;
     tasks.forEach(task => {
-      axios.post(zapUrl, task)
-      .then(res => console.log(res))
-      .catch(err => console.error(err))
+      taskStr += `Task Name: ${task.name}\n`;
     })
+    console.log(taskStr)
+    axios.post(zapUrl, {
+      taskString: taskStr
+    })
+    .then(res => console.log(res))
+    .catch(err => console.error(err))
   })
   .catch(err => console.error(err))
 }
+
 
 router.get("/", async (req, res) => {
   try {
