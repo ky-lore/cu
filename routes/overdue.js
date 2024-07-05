@@ -11,7 +11,7 @@ async function handler() {
   const startOfDay = new Date();
   startOfDay.setHours(0, 0, 0, 0);
   const timestamp = startOfDay.getTime();
-  const taskStr = ''
+  let taskStr = ''
 
   const url = `https://api.clickup.com/api/v2/list/${listId}/task?due_date_lt=${timestamp}`;
   await axios.get(url, header)
