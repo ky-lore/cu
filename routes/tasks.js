@@ -9,7 +9,7 @@ const taskHandler = require("../src/controllers/taskHandler");
 // @access  Public
 router.post("/task-moved/:taskId", async (req, res) => {
 	const { taskId } = req.params;
-
+	console.log(`Received task ID:${taskId}`)
 	try {
 		// Retrieve the details of the task that was moved using the taskId
 		const task = await getTaskById(taskId);
