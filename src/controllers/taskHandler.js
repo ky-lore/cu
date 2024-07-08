@@ -15,6 +15,7 @@ async function taskHandler(task) {
   // Extract the ids of members assigned to the task - we may not need this just yet but will leave it in for future smart cross-checks
   const assigneeIds = task.assignees.map((assignee) => assignee.id);
   console.log(assigneeIds)
+  console.log("Hello World")
   await assigneePersonToTask(task.id,assigneeIds);
   switch (status) {
     case 'preparation':
