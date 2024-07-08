@@ -145,4 +145,10 @@ module.exports = [
     channelId: 'C075WNA1HMM',
     poc: ids.sandra
   },
+  {
+    accountName: 'google-social-uncommon-education',
+    billingDate: 7,
+    channelId: 'C072DERP1K4',
+    poc: ids.sandra
+  },
 ]
