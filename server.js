@@ -15,6 +15,7 @@ app.use("/night", require("./routes/night"));
 app.use("/billing", require("./routes/billing"));
 app.use("/clickup", require("./routes/clickup"));
 app.use("/overdue", require("./routes/overdue"));
+app.use("/clients", require("./routes/clients"));
 
 
 const port = process.env.PORT;
