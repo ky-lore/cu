@@ -26,12 +26,6 @@ module.exports = [
     poc: ids.sandra
   },
   {
-    accountName: 'Safe Secure Trust',
-    billingDate: 11,
-    channelId: 'C06NZJKC2JW',
-    poc: ids.michael
-  },
-  {
     accountName: 'Dash Athletics',
     billingDate: 22,
     channelId: 'C06L1JD587Q',
@@ -68,12 +62,6 @@ module.exports = [
     poc: ids.michael
   },
   {
-    accountName: 'Nim Stant Personal Brand',
-    billingDate: 25,
-    channelId: 'C0764G2C9NC',
-    poc: ids.michael
-  },
-  {
     accountName: 'Nations Insurance',
     billingDate: 17,
     channelId: 'C073Y5WA15K',
@@ -92,26 +80,14 @@ module.exports = [
     poc: ids.michael
   },
   {
-    accountName: 'Smoky Bombs',
-    billingDate: 30,
-    channelId: 'C03JMMRPYK0',
-    poc: ids.abby
-  },
-  {
     accountName: 'internal-thesoftwarehub',
     billingDate: 16,
     channelId: 'C04PDBRNWAE',
-    poc: ids.kyle
-  },
-  {
-    accountName: 'social-stop-restoration-albuquerque',
-    billingDate: 18,
-    channelId: 'C078NL9ERQA',
-    poc: 'U06BQHXBY02'
+    poc: ids.sandra
   },
   {
     accountName: 'google-total-restore',
-    billingDate: 8,
+    billingDate: 22,
     channelId: 'C071UVBP8DB',
     poc: 'U06BQHXBY02'
   },
@@ -126,12 +102,6 @@ module.exports = [
     billingDate: 21,
     channelId: 'C078TTJGUKH',
     poc: 'U04D5CCRS30'
-  },
-  {
-    accountName: 'social-all-in-nation',
-    billingDate: 21,
-    channelId: 'C079XEJQQ6L',
-    poc: 'U06BQHXBY02'
   },
   {
     accountName: 'social-proferty',
@@ -150,5 +120,11 @@ module.exports = [
     billingDate: 7,
     channelId: 'C072DERP1K4',
     poc: ids.sandra
+  },
+  {
+    accountName: 'google-social-shut-the-fluff-up',
+    billingDate: 27,
+    channelId: 'C079ZFAV70A',
+    poc: ids.michael
   },
 ]
