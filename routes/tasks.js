@@ -25,4 +25,40 @@ router.post("/task-moved/:taskId", async (req, res) => {
 	}
 });
 
+router.post("/subtask-moved/:taskId", async (req, res) => {
+	const { taskId } = req.params;
+
+	try {
+		// Retrieve the details of the task that was moved using the taskId
+		const task = await getTaskById(taskId);
+
+		// taskHandler handles the task
+		// await ghlOpportunityHandler(task);
+		await taskHandler(task);
+
+		res.send("Success");
+	} catch (error) {
+		console.error(error);
+		res.status(500).send("Internal Server Error");
+	}
+});
+
+router.post("/subtask-moved/:taskId", async (req, res) => {
+	const { taskId } = req.params;
+
+	try {
+		// Retrieve the details of the task that was moved using the taskId
+		const task = await getTaskById(taskId);
+
+		// taskHandler handles the task
+		// await ghlOpportunityHandler(task);
+		await taskHandler(task);
+
+		res.send("Success");
+	} catch (error) {
+		console.error(error);
+		res.status(500).send("Internal Server Error");
+	}
+});
+
 module.exports = router;
