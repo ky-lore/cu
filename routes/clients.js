@@ -17,6 +17,11 @@ router.post("/", async (req, res) => {
     const data = req.body;
     const queryData = req.query; // Extract query parameters
     console.log('Received data:', data);
+
+    const zapUrl = 'https://hooks.zapier.com/hooks/catch/5506897/237uhk1/'
+
+    const response = await axios.post(zapUrl, postObj);
+    console.log('Zapier response:', response.data);
     console.log('Received query parameters:', queryData);
     res.send('Data received and external request sent successfully');
   } catch (error) {
