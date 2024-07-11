@@ -9,13 +9,14 @@ const axios = require('axios')
  * @param {object} task The request body from /tasks/task-moved/id
  * @returns {array} final array of tasks after handling
  */
-function taskHandler(task) {
+async function taskHandler(task) {
   const { status } = task.status
 
   // Extract the ids of members assigned to the task - we may not need this just yet but will leave it in for future smart cross-checks
   const assigneeIds = task.assignees.map((assignee) => assignee.id);
   console.log(assigneeIds)
-
+  console.log("Hello World")
+  await assigneePersonToTask(task.id,assigneeIds);
   switch (status) {
     case 'preparation':
       handlePreparation(task)
