@@ -127,4 +127,16 @@ module.exports = [
     channelId: 'C079ZFAV70A',
     poc: ids.michael
   },
+  {
+    accountName: 'social-son-and-co',
+    billingDate: 12,
+    channelId: 'C07CWV11BBJ',
+    poc: 'U073VF0L66L'
+  },
+  {
+    accountName: 'google-social-stop-restoration-abq',
+    billingDate: 15,
+    channelId: 'C037VLHU600',
+    poc: 'U06BQHXBY02'
+  },
 ]
