@@ -7,27 +7,27 @@ const { createSubtasks } = require('../src/controllers')
 const hours = 3600000
 
 const night = {
-  time: 'Evening',
+  time: 'Morning',
   emoji: '🌃',
   due_date: (1 * hours) + datetime()
 }
 
 async function handler(time) {
-  // let taskArray = usersDb
-  //   .map(user => ({
-  //     name: `${user._name.split(' ')[0]} ${time.time} Check In ${time.emoji}`,
-  //     assignees: [user.uid],
-  //     parent: process.env.DAILYTASK_ID,
-  //     custom_fields: [{
-  //       id: process.env.CUSTOMFIELDID,
-  //       value: process.env.DAILYTASK_SLACKID
-  //     }],
-  //     exempt: user.exempt,
-  //     due_date: time.due_date
-  //   }))
-  //   .filter(user => !user.exempt)
+  let taskArray = usersDb
+    .map(user => ({
+      name: `${user._name.split(' ')[0]} ${time.time} Check In - Please Audit Your Due Dates & Move if Needed`,
+      assignees: [user.uid],
+      parent: process.env.DAILYTASK_ID,
+      custom_fields: [{
+        id: process.env.CUSTOMFIELDID,
+        value: process.env.DAILYTASK_SLACKID
+      }],
+      exempt: user.exempt,
+      due_date: time.due_date
+    }))
+    .filter(user => !user.exempt)
 
-  // await createSubtasks(taskArray, process.env.LIST_ID)
+  await createSubtasks(taskArray, process.env.LIST_ID)
 }
 
 // @route   GET /morning
