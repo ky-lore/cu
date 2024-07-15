@@ -20,7 +20,7 @@ async function handler(time) {
       parent: process.env.DAILYTASK_ID,
       custom_fields: [{
         id: process.env.CUSTOMFIELDID,
-        value: process.env.DAILYTASK_SLACKID
+        value: '86b16m877'
       }],
       exempt: user.exempt,
       due_date: time.due_date
