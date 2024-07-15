@@ -44,4 +44,19 @@ module.exports = [
     uid: 82242423,
     exempt: false
   }
+  {
+    _name: 'Bryan De Los Santos',
+    uid: 82393838,
+    exempt: false
+  },
+  {
+    _name: 'Ralph Gomez',
+    uid: 82355321,
+    exempt: false
+  },
+  {
+    _name: 'Tommy Park',
+    uid: 90280112,
+    exempt: false
+  },
 ]
