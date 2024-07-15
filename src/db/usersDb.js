@@ -43,7 +43,7 @@ module.exports = [
     _name: 'Michael Barmaxis',
     uid: 82242423,
     exempt: false
-  }
+  },
   {
     _name: 'Bryan De Los Santos',
     uid: 82393838,
