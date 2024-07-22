@@ -23,7 +23,7 @@ async function handler(time) {
         value: '86b16m877'
       }],
       exempt: user.exempt,
-      due_date: time.due_date
+      due_date: new Date().getTime()
     }))
     .filter(user => !user.exempt)
 

@@ -57,6 +57,6 @@ module.exports = [
   {
     _name: 'Tommy Park',
     uid: 90280112,
-    exempt: false
+    exempt: true
   },
 ]
