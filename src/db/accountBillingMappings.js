@@ -56,12 +56,6 @@ module.exports = [
     poc: ids.nate
   },
   {
-    accountName: 'Nim Stant',
-    billingDate: 14,
-    channelId: 'C073FMKHH7D',
-    poc: ids.michael
-  },
-  {
     accountName: 'Nations Insurance',
     billingDate: 17,
     channelId: 'C073Y5WA15K',
@@ -139,4 +133,28 @@ module.exports = [
     channelId: 'C037VLHU600',
     poc: 'U06BQHXBY02'
   },
+  {
+    accountName: 'google-always-many-insurance-services',
+    billingDate: 29,
+    channelId: 'C07EC839TK9',
+    poc: 'U05U1F8255H'
+  },
+  {
+    accountName: 'social-nim-stant-international-impact',
+    billingDate: 14,
+    channelId: 'C073FMKHH7D',
+    poc: 'U04D5CCRS30'
+  },
+  {
+    accountName: 'google-social-nim-stant-international-impact',
+    billingDate: 14,
+    channelId: 'C073FMKHH7D',
+    poc: 'U02HKJMAR4Z'
+  },
+  {
+    accountName: 'google-social-grove-painting',
+    billingDate: 2nd,
+    channelId: 'C07FL0MDUAW',
+    poc: 'U02HKJMAR4Z'
+  }
 ]
