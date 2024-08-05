@@ -153,7 +153,7 @@ module.exports = [
   },
   {
     accountName: 'google-social-grove-painting',
-    billingDate: 2nd,
+    billingDate: 2,
     channelId: 'C07FL0MDUAW',
     poc: 'U02HKJMAR4Z'
   }
