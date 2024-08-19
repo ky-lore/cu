@@ -162,5 +162,11 @@ module.exports = [
     billingDate: 21,
     channelId: 'C079XEJQQ6L',
     poc: 'U04D5CCRS30'
-  }
+  },
+  {
+    accountName: 'social-fully-conscious-apparel',
+    billingDate: 19,
+    channelId: 'C07HN9TTDL4',
+    poc: 'U02HKJMAR4Z'
+    }
 ]
