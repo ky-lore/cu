@@ -156,5 +156,11 @@ module.exports = [
     billingDate: 2,
     channelId: 'C07FL0MDUAW',
     poc: 'U02HKJMAR4Z'
+  },
+  {
+    accountName: 'google-social-callgeeks',
+    billingDate: 21,
+    channelId: 'C079XEJQQ6L',
+    poc: 'U04D5CCRS30'
   }
 ]
