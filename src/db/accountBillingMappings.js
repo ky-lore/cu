@@ -168,5 +168,11 @@ module.exports = [
     billingDate: 19,
     channelId: 'C07HN9TTDL4',
     poc: 'U02HKJMAR4Z'
-    }
+    },
+    {
+      accountName: 'google-social-biltright',
+      billingDate: 24,
+      channelId: 'C07J4TTET9V',
+      poc: 'U02HKJMAR4Z'
+      }
 ]
