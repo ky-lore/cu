@@ -3,7 +3,7 @@ const { datetime, adminIds, parseLeads } = require('../utils')
 const { createSubtasks } = require('../controllers')
 
 
-const leads = { croLead: 82393838, srchLead: 44588182, soclLead: 82242423 }
+const leads = { croLead: 82457300, srchLead: 44588182, soclLead: 82242423 }
 
 /**
  * 
