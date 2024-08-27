@@ -58,5 +58,10 @@ module.exports = [
     _name: 'Jordan Morales',
     uid: 82457299,
     exempt: false
+  },
+  {
+    _name: 'Elise Ngo',
+    uid: 82457300,
+    exempt: false
   }
 ]
