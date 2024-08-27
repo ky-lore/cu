@@ -4,7 +4,7 @@ const axios = require('axios')
 
 const { createSubtasks } = require('../controllers')
 
-const leads = { croLead: 5997125, srchLead: 44588182, soclLead: 82242423 }
+const leads = { croLead: 82393838, srchLead: 44588182, soclLead: 82242423 }
 
 // const testTags = ['social', 'leadgen', 'ecom', 'dev', 'google']
 
