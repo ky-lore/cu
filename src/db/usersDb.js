@@ -4,11 +4,11 @@ module.exports = [
     uid: 44588182,
     exempt: false
   },
-  {
-    _name: 'Kyle Lorenzo',
-    uid: 5997125,
-    exempt: false
-  },
+  // {
+  //   _name: 'Kyle Lorenzo',
+  //   uid: 5997125,
+  //   exempt: false
+  // },
   {
     _name: 'Chris Baker',
     uid: 14881210,
