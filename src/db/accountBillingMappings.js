@@ -174,5 +174,11 @@ module.exports = [
       billingDate: 24,
       channelId: 'C07J4TTET9V',
       poc: 'U02HKJMAR4Z'
-      }
+      },
+      {
+        accountName: 'google-social-rancheros-de-santa-fe',
+        billingDate: 30,
+        channelId: 'C07JW7KLXF1',
+        poc: 'U02HKJMAR4Z'
+        }
 ]
