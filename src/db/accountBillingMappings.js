@@ -1,11 +1,17 @@
 const ids = require('./slackIds')
 
 module.exports = [
-  {
+  /*{
     accountName: 'Always a Student',
     billingDate: 1,
     channelId: 'C046M7NUW3H',
     poc: ids.sandra
+  },*/
+  {
+    accountName: 'google-always-a-student',
+    billingDate: 1,
+    channelId: 'C046M7NUW3H',
+    poc: 'U07HLFKKZ9S'
   },
   {
     accountName: 'BAM Capital',
@@ -168,17 +174,17 @@ module.exports = [
     billingDate: 19,
     channelId: 'C07HN9TTDL4',
     poc: 'U02HKJMAR4Z'
-    },
-    {
-      accountName: 'google-social-biltright',
-      billingDate: 24,
-      channelId: 'C07J4TTET9V',
-      poc: 'U02HKJMAR4Z'
-      },
-      {
-        accountName: 'google-social-rancheros-de-santa-fe',
-        billingDate: 30,
-        channelId: 'C07JW7KLXF1',
-        poc: 'U02HKJMAR4Z'
-        }
+  },
+  {
+    accountName: 'google-social-biltright',
+    billingDate: 24,
+    channelId: 'C07J4TTET9V',
+    poc: 'U02HKJMAR4Z'
+  },
+  {
+    accountName: 'google-social-rancheros-de-santa-fe',
+    billingDate: 30,
+    channelId: 'C07JW7KLXF1',
+    poc: 'U02HKJMAR4Z'
+  }
 ]
