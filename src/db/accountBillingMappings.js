@@ -186,5 +186,11 @@ module.exports = [
     billingDate: 30,
     channelId: 'C07JW7KLXF1',
     poc: 'U02HKJMAR4Z'
+  },
+  {
+    accountName: 'google-social-carlsbad-rv-park',
+    billingDate: 30,
+    channelId: 'C07L9S8FX7B',
+    poc: 'U02HKJMAR4Z'
   }
 ]
