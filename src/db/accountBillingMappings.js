@@ -198,5 +198,11 @@ module.exports = [
     billingDate: 9,
     channelId: 'C070XGK3S8J',
     poc: 'U02HKJMAR4Z'
+  },
+  {
+    accountName: 'google-social-panorama-360',
+    billingDate: 6,
+    channelId: 'C07LHAAL4KF',
+    poc: 'U02HKJMAR4Z'
   }
 ]
