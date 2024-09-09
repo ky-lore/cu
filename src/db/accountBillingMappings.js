@@ -192,5 +192,11 @@ module.exports = [
     billingDate: 30,
     channelId: 'C07L9S8FX7B',
     poc: 'U02HKJMAR4Z'
+  },
+  {
+    accountName: 'google-social-brightmoons',
+    billingDate: 9,
+    channelId: 'C070XGK3S8J',
+    poc: 'U02HKJMAR4Z'
   }
 ]
