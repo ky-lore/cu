@@ -204,5 +204,11 @@ module.exports = [
     billingDate: 6,
     channelId: 'C07LHAAL4KF',
     poc: 'U02HKJMAR4Z'
+  },
+  {
+    accountName: 'google-social-figbrew',
+    billingDate: 12,
+    channelId: 'C07GALUE495',
+    poc: 'U02HKJMAR4Z'
   }
 ]
