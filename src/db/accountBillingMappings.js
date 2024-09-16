@@ -210,5 +210,11 @@ module.exports = [
     billingDate: 12,
     channelId: 'C07GALUE495',
     poc: 'U02HKJMAR4Z'
+  },
+  {//This account is purely for testing purposes
+    accountName: 'cro-debug-new-command',
+    billingDate: 18,
+    channelId: 'C07LBGB8STB',
+    poc: 'U078G5R9J74'
   }
 ]

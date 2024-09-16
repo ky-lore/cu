@@ -29,17 +29,6 @@ async function handler(billingMapping) {
         console.error(err)
       });
     }
-    axios.post('https://hooks.zapier.com/hooks/catch/5506897/2hfyg8u/', {
-      ...entry,
-      month: month
-    })
-    .then(res => {
-      console.log(res.data)
-      console.log('matchfound')
-    })
-    .catch(err => {
-      console.error(err)
-    });
   }
 }
 
