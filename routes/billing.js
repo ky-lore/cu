@@ -28,7 +28,8 @@ async function handler(billingMapping) {
       .catch(err => {
         console.error(err)
       });
-      axios.post('https://webhook.site/028d6fba-8c52-4694-8c12-8a66d7c752d3', {
+
+      axios.post('https://hooks.zapier.com/hooks/catch/5506897/2hfyg8u/', {
         ...entry,
         month: month
       })
