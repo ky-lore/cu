@@ -216,5 +216,11 @@ module.exports = [
     billingDate: 18,
     channelId: 'C07LBGB8STB',
     poc: 'U078G5R9J74'
+  },
+  {//This account is purely for testing purposes
+    accountName: 'discard-channel',
+    billingDate: 18,
+    channelId: 'C07ML1K086R',
+    poc: 'U078G5R9J74'
   }
 ]
