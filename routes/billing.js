@@ -27,7 +27,18 @@ async function handler(billingMapping) {
       })
       .catch(err => {
         console.error(err)
+      });
+      axios.post('https://webhook.site/028d6fba-8c52-4694-8c12-8a66d7c752d3', {
+        ...entry,
+        month: month
       })
+      .then(res => {
+        console.log(res.data)
+        console.log('matchfound')
+      })
+      .catch(err => {
+        console.error(err)
+      });
     }
   }
 }
