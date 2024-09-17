@@ -171,7 +171,7 @@ module.exports = [
   },
   {
     accountName: 'social-fully-conscious-apparel',
-    billingDate: 19,
+    billingDate: 30,
     channelId: 'C07HN9TTDL4',
     poc: 'U02HKJMAR4Z'
   },
