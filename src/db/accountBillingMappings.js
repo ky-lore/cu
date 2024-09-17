@@ -222,5 +222,11 @@ module.exports = [
     billingDate: 18,
     channelId: 'C07ML1K086R',
     poc: 'U078G5R9J74'
+  },
+  {
+    accountName: 'google-social-propel-plumbing',
+    billingDate: 17,
+    channelId: 'C07MN477NA2',
+    poc: 'U02HKJMAR4Z'
   }
 ]
