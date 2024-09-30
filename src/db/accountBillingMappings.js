@@ -11,7 +11,7 @@ module.exports = [
     accountName: 'google-always-a-student',
     billingDate: 1,
     channelId: 'C046M7NUW3H',
-    poc: 'U07HLFKKZ9S'
+    poc: 'U05U1F8255H'
   },
   {
     accountName: 'BAM Capital',
@@ -215,12 +215,6 @@ module.exports = [
     accountName: 'cro-debug-new-command',
     billingDate: 18,
     channelId: 'C07LBGB8STB',
-    poc: 'U078G5R9J74'
-  },
-  {//This account is purely for testing purposes
-    accountName: 'discard-channel',
-    billingDate: 18,
-    channelId: 'C07ML1K086R',
     poc: 'U078G5R9J74'
   },
   {
