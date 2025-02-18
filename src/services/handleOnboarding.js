@@ -17,14 +17,14 @@ const leads = { croLead: 82393838, srchLead: 44588182, soclLead: 82242423 }
 
 async function handleOnboarding(task, assigneeIds) {
 
-  console.log(task)
+  console.log('onboarding!!!')
 
-  try {
-    const res = await axios.post('https://backend.leadconnectorhq.com/hooks/abicfvSRunSz4oHmp5lQ/webhook-trigger/d136ef38-72ca-412d-87ca-4a5161e8f186', { taskData: task });
-    console.log(res.data);
-  } catch (err) {
-    console.error('Axios error:', err)
-  }
+  // try {
+  //   const res = await axios.post('https://backend.leadconnectorhq.com/hooks/abicfvSRunSz4oHmp5lQ/webhook-trigger/d136ef38-72ca-412d-87ca-4a5161e8f186', { taskData: task });
+  //   console.log(res.data);
+  // } catch (err) {
+  //   console.error('Axios error:', err)
+  // }
 
   // console.log(testLeads, testTags)
 
@@ -77,6 +77,7 @@ async function handleOnboarding(task, assigneeIds) {
     }
   })
 
+  console.log(finalArr)
   await createSubtasks(finalArr, task.list.id)
 }
 

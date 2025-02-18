@@ -12,10 +12,7 @@ const taskFlags = {
 };
 
 const gblTasks = [
-  {
-    name: "Schedule team-wide pre-launch checks and QC process",
-    due_date: 5 * days
-  }
+  // Placeholder for future
 ].map(obj => ({ ...obj, name: 'LEADS - ' + obj.name, flag: taskFlags.gbl }));
 
 const srchTasks = [
@@ -141,10 +138,10 @@ const croTasks = [
 ].map(obj => ({ ...obj, flag: taskFlags.cro }));
 
 const ctvTasks = [
-  {
-    name: "Map out creative timelines and gather all required assets and list of neccessary formats",
-    due_date: 5 * days
-  }
+  // {
+  //   name: "Map out creative timelines and gather all required assets and list of neccessary formats",
+  //   due_date: 5 * days
+  // }
 ].map(obj => ({ ...obj, flag: taskFlags.ctv }));
 
 // Concatenating all four arrays into one final export array to send to createSubtasks

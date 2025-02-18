@@ -18,7 +18,7 @@ app.use("/overdue", require("./routes/overdue"));
 app.use("/clients", require("./routes/clients"));
 
 
-const port = process.env.PORT;
+const port = 8080;
 
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);

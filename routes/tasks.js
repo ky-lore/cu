@@ -13,7 +13,6 @@ router.post("/task-moved/:taskId", async (req, res) => {
 	try {
 		// Retrieve the details of the task that was moved using the taskId
 		const task = await getTaskById(taskId);
-
 		// taskHandler handles the task
 		// await ghlOpportunityHandler(task);
 		await taskHandler(task);
