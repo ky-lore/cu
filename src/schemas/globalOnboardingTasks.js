@@ -14,47 +14,40 @@ const createTask = (name, due_date, flags) => ({
 
 
 const gblTasks = [
-  { name: "Schedule external kickoff meet" },
-  { name: "Schedule post-kickoff internal meet" },
+  // { name: "Schedule external kickoff meet" },
+  // { name: "Schedule post-kickoff internal meet" },
 ].map(task => createTask(task.name, 1 * days, ['global']))
 
 const srchEcomTasks = [
-  { name: "Google Merchant Center setup" },
-  { name: "Ad account setup" },
-  { name: "GA4 setup" },
-  { name: "Google Tag Manager setup" },
-  { name: "COGS list and analysis" }
+  // { name: "Google Merchant Center setup" },
+  // { name: "Ad account setup" },
+  // { name: "GA4 setup" },
+  // { name: "Google Tag Manager setup" },
+  // { name: "COGS list and analysis" }
 ].map(task => createTask(task.name, 2 * days, ['google', 'ecom']))
 
 const srchLeadgenTasks = [
-  { name: "Ad account setup" },
-  { name: "GA4 setup" },
-  { name: "Google Tag Manager setup" }
+  // { name: "Ad account setup" },
+  // { name: "GA4 setup" },
+  // { name: "Google Tag Manager setup" }
 ].map(task => createTask(task.name, 2 * days, ['google', 'leadgen']))
 
 const socEcomTasks = [
-  { name: "Shopify access" },
-  { name: "Business manager" },
-  { name: "Ad account" },
-  { name: "Meta page setup" },
+  // { name: "Shopify access" },
+  // { name: "Business manager" },
+  // { name: "Ad account" },
+  // { name: "Meta page setup" },
 ].map(task => createTask(task.name, 2 * days, ['social', 'ecom']))
 
 const socLeadgenTasks = [
-  { name: "Business manager" },
-  { name: "Ad account setup" },
-  { name: "Meta page setup" }
+  // { name: "Business manager" },
+  // { name: "Ad account setup" },
+  // { name: "Meta page setup" }
 ].map(task => createTask(task.name, 2 * days, ['social', 'leadgen']))
 
 const devTasks = [
   { name: "Domain access" },
   { name: "Website/hosting access" },
-  { name: "GHL creation if nec." },
-  { name: "Brand Guide" },
-  { name: "Reference Pages" },
-  { name: "CRM access (if not GHL)" },
-  { name: "3rd Party Integration Access/Fulfillment" },
-  { name: "Tracking codes/pixels" },
-  { name: "Remove ALL third party scripts" },
 ].map(task => createTask(task.name, 2 * days, ['dev']))
 
 module.exports = [

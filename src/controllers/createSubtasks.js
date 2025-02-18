@@ -1,5 +1,10 @@
 const axios = require("axios");
-const header = require("../../routes/_resources/header");
+const header = {
+  headers: {
+    Authorization: 'pk_88213720_3C407NGBGKP392FAFRECWNFWODAAVFGW',
+    'Content-Type': 'application/json',
+  },
+};
 
 /**
  *

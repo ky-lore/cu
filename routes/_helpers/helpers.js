@@ -1,5 +1,10 @@
 const axios = require("axios");
-const header = require("../_resources/header");
+const header = {
+  headers: {
+    Authorization: 'pk_88213720_3C407NGBGKP392FAFRECWNFWODAAVFGW',
+    'Content-Type': 'application/json',
+  },
+};
 
 // @desc    Get task details by ID from the ClickUp API
 // @param   taskId - The ID of the task to retrieve
