@@ -10,6 +10,7 @@ const axios = require('axios')
  * @returns {array} final array of tasks after handling
  */
 async function taskHandler(task) {
+  // console.log(task)
   const { status } = task.status
 
   // Extract the ids of members assigned to the task - we may not need this just yet but will leave it in for future smart cross-checks
