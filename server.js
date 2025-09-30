@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use("/overdue", require("./routes/overdue"));
 // app.use("/clients", require("./routes/clients"));
 app.use("/health", require("./routes/health"));
+app.use("/task", require("./routes/task"));
 
 
 const port = 8080;
