@@ -35,8 +35,6 @@ router.post("/", async (req, res) => {
       f.name.includes(task.channelId)
     );
 
-    console.log("Matching folders:", matched);
-
     const folderId = matched[0].id
     const folderName = matched[0].name
     const list = matched[0].lists.filter(list => list.name.includes('TODO'))
@@ -54,9 +52,6 @@ router.post("/", async (req, res) => {
       channelName: task.channelName,
       folderName: folderName
     };
-
-    console.log(req.body)
-    console.log(list[0].id, typeof list[0].id)
 
     createTask(Number(list[0].id), taskObj)
 
