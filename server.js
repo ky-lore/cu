@@ -3,7 +3,7 @@ const { handleDailies } = require("./src/services");
 const { assignLsa } = require("./routes/_helpers/helpers");
 
 const app = express();
-
+// 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use("/clients", require("./routes/clients"));
 app.use("/health", require("./routes/health"));
 app.use("/task", require("./routes/task"));
-
+app.use("/cadence", require("./routes/cadence")); 
 
 const port = 8080;
 
