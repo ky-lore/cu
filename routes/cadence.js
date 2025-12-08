@@ -76,26 +76,30 @@ router.get("/", async (req, res) => {
 // Add to the json for utility
 function handle_tasks(tasks) {
   const convertedTasks = tasks.map(task => {
-    const obj = task.toObject(); // convert once
+    const obj = task.toObject();
+
+    const message = `
+*${obj["Account"]} – Weekly CM Meeting Tomorrow!*
+
+Please provide updates on:
+• *Outstanding tasks & deliverables*
+• *Insights on campaign performance (L7 vs. P7)*
+• *Key wins, challenges, or blockers*
+• *Notable shifts in spend, CPC, or conversion trends*
+• *Any client-facing items we should prepare for tomorrow’s meeting*
+`.trim();
+
     return {
       ...obj,
       dayIndex: intify(obj["Day of Week"]),
-      messaging: `
-      
-      ${obj["Account"]} - Weekly CM Meeting Tomorrow!
-        Please provide updates on outstanding tasks and deliverables and report on campaign progress:
-        Impressions
-        Clicks
-        Conv%
-        CPC
-        Confirm L7 Spend`
+      messaging: message
     };
   });
 
   console.log("✅ Message works!");
-  //console.log(convertedTasks);
   return convertedTasks;
 }
+
 // slack bot 
 async function handle_slack(res, notifications){
 const { WebClient } = require('@slack/web-api');
