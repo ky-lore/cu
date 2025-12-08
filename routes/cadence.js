@@ -56,7 +56,7 @@ const TaskSchema = new mongoose.Schema({
   
   
 });
-const Task = mongoose.model("Task", TaskSchema, "Weekly_Cadence_Two");
+const Task = mongoose.model("Task", TaskSchema, "Weekly_Cadence_Three");
 
 
 router.get("/", async (req, res) => {
