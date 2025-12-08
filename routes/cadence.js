@@ -52,7 +52,8 @@ const TaskSchema = new mongoose.Schema({
   "Day of Week": String,
   "Growth Rep": String,
   "Cadence": String,
-  "used": Boolean
+  "used": Boolean,
+  "pod": String
   
   
 });
