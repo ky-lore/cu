@@ -81,7 +81,7 @@ function handle_tasks(tasks) {
       ...obj,
       dayIndex: intify(obj["Day of Week"]),
       messaging: `
-      THE FOLLOWING IS A TEST MESSAGE PLEASE IGNORE WHAT IT SAYS
+      
       ${obj["Account"]} - Weekly CM Meeting Tomorrow!
         Please provide updates on outstanding tasks and deliverables and report on campaign progress:
         Impressions
