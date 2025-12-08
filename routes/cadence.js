@@ -28,21 +28,21 @@ function intify(string){
 
 switch (string) {
   case "Mo":
-    return 0;
+    return 1;
     
   case "Tu":
-    return 1
-  case "We":
     return 2
-  case "Th":
+  case "We":
     return 3
+  case "Th":
+    return 4
   
   case "Fr":
-    return 4
-  case "Sa":
     return 5
-  case "Su":
+  case "Sa":
     return 6
+  case "Su":
+    return 0
     
 }
 }
@@ -109,6 +109,13 @@ for (let i = 0; i < notifications.length; i++) {
       console.log("Skipping invalid channel:", conversationId);
       continue;
     }     
+
+    //date check 
+      const today = new Date();
+      const dayOfWeek = today.getDay(); 
+      if (notifications[i].dayIndex  != (dayOfWeek + 1) % 7){
+        continue;
+      }
        //biweekly check
        if (notifications[i]["Cadence"] == "Bi-Weekly"){
             if (notifications[i]["used"] == false){
@@ -132,7 +139,8 @@ for (let i = 0; i < notifications.length; i++) {
                 channel: conversationId,
                 text: notifications[i].messaging
                 });
-
+                console.log(`Would send to ${conversationId}: ${notifications[i].Account}`);
+                
                 console.log(`Message sent successfully at ${result.ts}`);
             } catch (error) {
                 console.error('Error posting message:', error);
