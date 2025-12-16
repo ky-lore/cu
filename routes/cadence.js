@@ -52,11 +52,13 @@ const TaskSchema = new mongoose.Schema({
   "Day of Week": String,
   "Growth Rep": String,
   "Cadence": String,
-  "used": Boolean
+  "used": Boolean,
+  "Growth Rep UID": String,
+  "Pod": String
   
   
 });
-const Task = mongoose.model("Task", TaskSchema, "Weekly_Cadence_Three");
+const Task = mongoose.model("Task", TaskSchema, "Weekly_Cadence_Four");
 
 
 router.get("/", async (req, res) => {
@@ -87,6 +89,8 @@ Please provide updates on:
 • *Key wins, challenges, or blockers*
 • *Notable shifts in spend, CPC, or conversion trends*
 • *Any client-facing items we should prepare for tomorrow’s meeting*
+<@${task["Growth Rep UID"]}>
+${task["Pod"] != null ? "<!subteam^" + task["Pod"] + '>': "No Pod Yet"}
 `.trim();
 
     return {
