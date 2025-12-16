@@ -90,7 +90,7 @@ Please provide updates on:
 • *Notable shifts in spend, CPC, or conversion trends*
 • *Any client-facing items we should prepare for tomorrow’s meeting*
 <@${task["Growth Rep UID"]}>
-${task["Pod"] != null ? "<!subteam^" + task["Pod"] + '>': "No Pod Yet"}
+${task["Pod"] != null ? "<!subteam^" + task["Pod"] + '>': ""}
 `.trim();
 
     return {
