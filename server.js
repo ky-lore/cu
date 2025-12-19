@@ -19,7 +19,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/health", require("./routes/health"));
 app.use("/task", require("./routes/task"));
 app.use("/cadence", require("./routes/cadence")); 
-
+app.use("/taskdisplay", require("./routes/taskdisplay")); 
+app.use("/auth", require("./routes/auth"));
 const port = 8080;
 
 app.listen(port, () => {
