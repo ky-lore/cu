@@ -6,6 +6,13 @@ const { WebClient } = require('@slack/web-api');
 
 const token = process.env.SLACKBOT;
 const web = new WebClient(token);
+ const pstString = new Date().toLocaleString("en-US", {
+  timeZone: "America/Los_Angeles"
+});
+
+
+  const today = new Date(pstString);
+  const dayOfWeek = today.getDay(); 
 for (let i = 0; i < notifications.length; i++) {
         const conversationId = notifications[i]["Internal Slack Channel ID"]; // Access element by index
         if (!conversationId || !/^[CGD]/.test(conversationId)) {
@@ -14,11 +21,14 @@ for (let i = 0; i < notifications.length; i++) {
     }     
 
     //date check 
-      const today = new Date();
-      const dayOfWeek = today.getDay(); 
+     
+      //console.log("Checking:", notifications[i].Account, 
+            //"dayIndex:", notifications[i].dayIndex,
+            //"tomorrowIndex:", (dayOfWeek + 1) % 7);
       if (notifications[i].dayIndex  != (dayOfWeek + 1) % 7){
         continue;
       }
+    
        //biweekly check
        if (notifications[i]["Cadence"] == "Bi-Weekly"){
             if (notifications[i]["used"] == false){
@@ -35,7 +45,8 @@ for (let i = 0; i < notifications.length; i++) {
             }
 
        }
-            
+            console.log("Account:", notifications[i].Account, 
+            "DayIndex:", notifications[i].dayIndex);
        try {
                 await web.conversations.join({ channel: conversationId });
                 const result = await web.chat.postMessage({

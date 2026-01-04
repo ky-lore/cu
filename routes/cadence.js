@@ -16,6 +16,8 @@ router.get("/", async (req, res) => {
   await handle_slack(res, notifications)
   
   console.log("✅ Message works!");
+  console.log("Tasks found:", tasks.length);
+  console.log("Notifications:", notifications.length);
   res.json({ success: true, count: notifications.length });
 });
 
