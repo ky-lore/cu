@@ -23,6 +23,7 @@ app.use("/taskdisplay", require("./routes/taskdisplay"));
 app.use("/auth", require("./routes/auth"));
 app.use("/folders", require("./routes/folders"));
 app.use("/temper", require("./routes/temper"));
+app.use("/clickupTodo", require("./routes/clickupTodo"));
 const port = 8080;
 const axios = require("axios");
 

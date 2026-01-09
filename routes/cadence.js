@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
   
   const tasks = await Task.find();
    
-  const notifications = handle_tasks(tasks);
+  const notifications = await handle_tasks(tasks);
   //res.json(tasks)
   await handle_slack(res, notifications)
   
