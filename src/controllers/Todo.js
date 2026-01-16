@@ -37,7 +37,9 @@ async function getTodoData() {
 
   for (const folder of folders) {
     await sleep(REQUEST_DELAY);
+    // buffer just in case of failure
 
+    //The folder employs regex with .match to employ it 
     const match = folder.name.match(/\(([^)]+)\)$/);
     const slackChannel = match ? match[1] : null;
 
