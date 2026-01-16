@@ -17,7 +17,14 @@ router.get("/", async (req, res) => {
 
     const results = [];
 
+    //  DAYS FILTER
+    const cutoff = Date.now() - 14 * 24 * 60 * 60 * 1000; //14 //days
+    //const cutoff = Date.now() - 60 * 24 * 60 * 60 * 1000; //Month
+    //const cutoff = Date.now() - 365 * 24 * 60 * 60 * 1000; // Year
+    //  DAYS FILTER
+
     for (const folder of response.data.folders) {
+      // replace recentFolders with response.data.folders if you don't want 14 days filter
       const weeklyList = folder.lists.find(list =>
         list.name.toLowerCase().includes("weekly cm")
       );
@@ -46,6 +53,12 @@ router.get("/", async (req, res) => {
       const mostRecent = tasks.sort(
         (a, b) => Number(b.date_created) - Number(a.date_created)
       )[0];
+
+
+
+      // 🔥 Only include folders with activity in the past year
+      if (Number(mostRecent.date_created) < cutoff) continue;
+      // Buffer
 
       // Extract dropdown values
       const getDropdownValue = field => {
