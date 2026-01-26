@@ -6,29 +6,37 @@ require("dotenv").config();
 const GHL_API_URL = "https://rest.gohighlevel.com/v1/locations";
 const GHL_TOKEN = process.env.GHL_ACTUAL; 
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
+    const data = req.body;
+    console.log(data)
     // HARD‑CODED VALUES
     const payload = {
-      businessName: "Payloadworld",
-      address: "3500 Deer Creek Road",
-      city: "Palo Alto",
-      state: "CA",
-      postalCode: "94304",
+      businessName: data.customData.businessName,
+      address: `${data.address ? data.address : "123 Sesame St."}`,
+      city: `${data.city ? data.city : "Orange"}`,
+      state: `${data.state ? data.state : "CA"}`,
+      postalCode: `${data.city ? data.city : "92626"}`,
       country: "US",
-      website: "https://example.com/",
-      timezone: "US/Central",
-      firstName: "Elon",
-      lastName: "Musk",
-      email: "elon@tesla.com",
-      phone: "+15555555555",
+      website: `${data.website ? data.website : "https://www.example.com"}`,
+      timezone: "US/Pacific",
+      firstName: `${data.firstName ? data.firstName : "TBA"}`,
+      lastName: `${data.lastName ? data.lastName : "TBA"}`,
+      email: `${data.email ? data.email : "kyle@advancedmarketers.co"}`,
+      phone: data.phone,
       settings: {
         allowDuplicateContact: false,
         allowDuplicateOpportunity: false,
         allowFacebookNameMerge: false,
         disableContactTimezone: false
+      },
+      snapshot: {
+        "id": "LR4ngdhMWZF5w5hhmk7z",
+        "type": "vertical"
       }
     };
+
+    // console.log(payload)
 
     const response = await axios.post(GHL_API_URL, payload, {
       headers: {
