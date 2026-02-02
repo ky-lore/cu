@@ -28,7 +28,7 @@ app.use("/gohighaccount", require("./routes/gohighaccount"));
 const port = 8080;
 const axios = require("axios");
 
-function empty(){
+function empty2(){
 
 }
 app.listen(port, () => {
