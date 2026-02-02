@@ -1,0 +1,40 @@
+name: AutoDoc
+
+on:
+  push:
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Initialize
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # REQUIRED for multi-commit diff
+
+      - name: Setup Pythagorus
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run scripts
+        run: |
+          CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
+
+          for file in $CHANGED_FILES; do
+            if [ ! -f "$file" ]; then
+              continue
+            fi
+
+            echo "Generating docs for $file"
+            python scripts/generate_documentation.py "$file" > "documentation/$(basename "$file").txt"
+          done
+
+      - name: Commit documentation
+        run: |
+          git config --local user.name "github-actions"
+          git config --local user.email "github-actions@github.com"
+
+          git add documentation/
+          git commit -m "Auto-generated documentation" || echo "No changes to commit"
+          git push
