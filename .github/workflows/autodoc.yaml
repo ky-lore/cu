@@ -12,19 +12,29 @@ jobs:
         with:
           fetch-depth: 0 # REQUIRED for multi-commit diff
 
-      - name: Setup Pythagorus
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Run scripts
         run: |
+          mkdir -p documentation
+
           CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
 
           for file in $CHANGED_FILES; do
+
+            # Skip deleted files
             if [ ! -f "$file" ]; then
               continue
             fi
+
+            # Only process JS files
+            case "$file" in
+              *.js) ;;      # allow
+              *) continue ;; # skip everything else
+            esac
 
             echo "Generating docs for $file"
             python scripts/generate_documentation.py "$file" > "documentation/$(basename "$file").txt"
