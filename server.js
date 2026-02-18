@@ -25,10 +25,13 @@ app.use("/folders", require("./routes/folders"));
 app.use("/temper", require("./routes/temper"));
 app.use("/clickupTodo", require("./routes/clickupTodo"));
 app.use("/gohighaccount", require("./routes/gohighaccount"));
+app.use("/ghlnotes", require("./routes/ghlnotes"));
 const port = 8080;
 const axios = require("axios");
 
+function empty63(){
 
+}
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);
 });

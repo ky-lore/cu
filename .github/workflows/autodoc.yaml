@@ -1,0 +1,55 @@
+name: AutoDoc
+
+on:
+  push:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Initialize
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }} # checkout the branch that triggered the workflow
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run scripts
+        run: |
+          mkdir -p documentation
+
+          CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
+
+          for file in $CHANGED_FILES; do
+            if [ ! -f "$file" ]; then
+              continue
+            fi
+
+            case "$file" in
+              *.js) ;;
+              *) continue ;;
+            esac
+
+            echo "Generating docs for $file"
+            python scripts/generate_documentation.py "$file" > "documentation/$(basename "$file").txt"
+          done
+
+      - name: Commit documentation to autodocs branch
+        run: |
+          git config --local user.name "github-actions"
+          git config --local user.email "github-actions@github.com"
+
+          git checkout autodocs || git checkout -b autodocs
+
+          cp -r documentation/* .
+
+          git add .
+          git commit -m "Auto-generated documentation" || echo "No changes to commit"
+          git push origin autodocs
