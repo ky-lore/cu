@@ -26,7 +26,7 @@ const TOKEN = process.env.CLICKUP_API_KEY;
 async function AddDocs(folder_id, text){ 
         // Request that creates the document file, uses id property to get the file
         const response = await axios.post(`https://api.clickup.com/api/v3/workspaces/${TEAM_ID}/docs`, {
-            name: "Notes Doc Forever",  
+            name: "Sales Notes",  
             parent: {
             id: folder_id,
             type: 5
@@ -39,7 +39,7 @@ async function AddDocs(folder_id, text){
         // Now that doc has been made, we can, use the responses data to directly go the doc file and add pages with the text
         const page = await axios.post(`https://api.clickup.com/api/v3/workspaces/${TEAM_ID}/docs/${response.data.id}/pages`, {
             //parent_page_id: response.data.id,
-            name: "Notes Page Forever",  
+            name: "Sales Notes",  
             sub_title: 'Notes',
             content: text,    
             content_format: 'text/plain'
@@ -75,6 +75,7 @@ router.post("/", async(req, res)=>{
                 if (folder.name.includes(hardcoded)) {
                     await AddDocs(folder.id, text);
                     console.log("ClickUp doc created successfully");
+                    console.log(folder)
                 }
             }
         } catch (err) {
