@@ -26,6 +26,8 @@ app.use("/temper", require("./routes/temper"));
 app.use("/clickupTodo", require("./routes/clickupTodo"));
 app.use("/gohighaccount", require("./routes/gohighaccount"));
 app.use("/ghlnotes", require("./routes/ghlnotes"));
+app.use("/qa", require("./routes/qa"));
+app.use("/qasop", require("./routes/qasop"));
 const port = 8080;
 const axios = require("axios");
 
