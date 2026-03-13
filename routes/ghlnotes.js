@@ -4,8 +4,7 @@
 // creates a doc file in that clickup folder
 
 
-
-//Boilerplate setup
+const { logSlack } = require("../src/controllers/slacklog");//Boilerplate setup
 const express = require('express')
 const router = express.Router();
 const axios = require("axios");
@@ -94,17 +93,22 @@ async function AddDocs(folder_id, text){
 router.post("/", async(req, res)=>{
     // Check to make sure zapier info is recieved
     console.log("BODY RECEIVED FROM ZAPIER:", req.body);
+
     const hardcoded = req.body.channel;
     const text =  req.body.notes
     console.log("BODY RECEIVED FROM ZAPIER:", req.body.notes);  
-    
+
      
+
+    await logSlack(JSON.stringify(req.body, null, 2), 'C0AB218MM18');
+
+
     // This api searches the account space for the right folder and then calls Adddocs() to populate it 
      setTimeout(async () => {
         try {
             console.log("Running delayed ClickUp logic...");
             const SPACE_ID = await findSpaceIdByChannel(hardcoded);
-
+            // Does not loop for logging.
             const response = await axios.get(
                 `https://api.clickup.com/api/v2/space/${SPACE_ID}/folder`,
                 { headers: { Authorization: TOKEN } }
