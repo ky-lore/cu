@@ -10,12 +10,50 @@ const express = require('express')
 const router = express.Router();
 const axios = require("axios");
 require("dotenv").config();
-const SPACE_ID = '90144439498'
+//const SPACE_ID = '90144439498'
 // noramlly SPACE_ID it would be process.env.SPACE_ID which allows folder accounts 2.0 on clickup but in this case we do a seperate because we search on a differ account set;
 const TEAM_ID = process.env.TEAM_ID
 const TOKEN = process.env.CLICKUP_API_KEY;
 //Boilerplate setup
 
+// The function takes a folder_id and figure out what space the folder is located in 
+
+async function findSpaceIdByChannel(hardcoded) {
+    // 1. Get all teams
+    const teamsRes = await axios.get(
+        "https://api.clickup.com/api/v2/team",
+        { headers: { Authorization: TOKEN } }
+    );
+
+    // 2. Loop through each team
+    for (const team of teamsRes.data.teams) {
+
+        // 3. Get all spaces in this team
+        const spacesRes = await axios.get(
+            `https://api.clickup.com/api/v2/team/${team.id}/space`,
+            { headers: { Authorization: TOKEN } }
+        );
+
+        // 4. Loop through each space
+        for (const space of spacesRes.data.spaces) {
+
+            // 5. Get all folders in this space
+            const foldersRes = await axios.get(
+                `https://api.clickup.com/api/v2/space/${space.id}/folder`,
+                { headers: { Authorization: TOKEN } }
+            );
+
+            // 6. Match folder by Slack channel ID
+            for (const folder of foldersRes.data.folders) {
+                if (folder.name.includes(hardcoded)) {
+                    return space.id;   // <-- ONLY return space ID
+                }
+            }
+        }
+    }
+
+    return null; // nothing matched
+}
 
 
 
@@ -65,6 +103,7 @@ router.post("/", async(req, res)=>{
      setTimeout(async () => {
         try {
             console.log("Running delayed ClickUp logic...");
+            const SPACE_ID = await findSpaceIdByChannel(hardcoded);
 
             const response = await axios.get(
                 `https://api.clickup.com/api/v2/space/${SPACE_ID}/folder`,
