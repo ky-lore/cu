@@ -1,0 +1,5 @@
+File: slacklog.js
+
+Functions:
+  - logSlack
+
