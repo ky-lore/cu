@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
   try {
     const task = req.body
     const folders = await listFolders("90142631628");
-    
+
     const matched = folders.filter((f) =>
       f.name.includes(task.channelId)
     );
@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
     const folderName = matched[0].name
     const list = matched[0].lists.filter(list => list.name.includes('TODO'))
     console.log(list)
-  
+
 
     // TODO: PASS USER ID FROM CLICKUP ZAP STEP
     const taskObj = {

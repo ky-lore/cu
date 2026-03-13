@@ -9,47 +9,53 @@ permissions:
 jobs:
   generate-docs:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Initialize
+      - name: Checkout repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.ref }} # checkout the branch that triggered the workflow
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Run scripts
+      - name: Detect new JS modules
+        id: detect
+        run: |
+          # Find files that are newly added in this push
+          NEW_FILES=$(git diff --diff-filter=A --name-only HEAD~1 HEAD | grep '\.js$' || true)
+
+          echo "New JS files:"
+          echo "$NEW_FILES"
+
+          # Export as output
+          echo "files=$NEW_FILES" >> $GITHUB_OUTPUT
+
+      - name: Generate documentation
+        if: steps.detect.outputs.files != ''
         run: |
           mkdir -p documentation
 
-          CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
-
-          for file in $CHANGED_FILES; do
-            if [ ! -f "$file" ]; then
-              continue
-            fi
-
-            case "$file" in
-              *.js) ;;
-              *) continue ;;
-            esac
-
+          for file in ${{ steps.detect.outputs.files }}; do
             echo "Generating docs for $file"
             python scripts/generate_documentation.py "$file" > "documentation/$(basename "$file").txt"
           done
 
-      - name: Commit documentation to autodocs branch
+      - name: Commit docs to autodocs branch
+        if: steps.detect.outputs.files != ''
         run: |
-          git config --local user.name "github-actions"
-          git config --local user.email "github-actions@github.com"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
 
-          git checkout autodocs || git checkout -b autodocs
+          # Create a separate worktree for the autodocs branch
+          git fetch origin
+          git worktree add autodocs-worktree autodocs || git worktree add -b autodocs autodocs-worktree
 
-          cp -r documentation/* .
+          cp -r documentation/* autodocs-worktree/
 
+          cd autodocs-worktree
           git add .
-          git commit -m "Auto-generated documentation" || echo "No changes to commit"
+          git commit -m "Auto-generated documentation for new modules" || echo "No changes"
           git push origin autodocs
