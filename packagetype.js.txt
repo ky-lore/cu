@@ -1,0 +1,6 @@
+File: packagetype.js
+
+Functions:
+  - createClickupList
+  - createPackages
+
