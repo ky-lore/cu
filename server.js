@@ -29,6 +29,10 @@ app.use("/gohighaccount", require("./routes/gohighaccount"));
 app.use("/ghlnotes", require("./routes/ghlnotes"));
 app.use("/qa", require("./routes/qa"));
 app.use("/qasop", require("./routes/qasop"));
+app.use("/packagetype", require("./routes/packagetype"));
+
+
+
 const port = 8080;
 const axios = require("axios");
 
