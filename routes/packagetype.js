@@ -25,14 +25,6 @@ async function createClickupList(folderId, listName) {
   }
 }
 
-
-
-
-
-
-
-
-
 async function createPackages(data) {
   const hashmap = data.package.split(",").reduce((acc, item) => {
     acc[item.trim()] = true;
@@ -60,7 +52,6 @@ for (const key in hashmap) {
         console.log("No matching case for:", key);
         break;
     }
-
     // should be data.folder
   }
 }
