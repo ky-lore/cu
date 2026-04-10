@@ -1,139 +1,177 @@
-// The following file is integrated with zapier, its purpose is that when a client is listed sold on gohighlevel
-// The notes information from that gohighlevel is transported to the clickup folder, this id done via zapier 
-// The zapier creates the clickup account, this program is run after the zapier creates the clickup, it gets notes from zapier and 
-// creates a doc file in that clickup folder
-
-
-const { logSlack } = require("../src/controllers/slacklog");//Boilerplate setup
-const express = require('express')
+const { logSlack } = require("../src/controllers/slacklog");
+const express = require('express');
 const router = express.Router();
 const axios = require("axios");
 require("dotenv").config();
-//const SPACE_ID = '90144439498'
-// noramlly SPACE_ID it would be process.env.SPACE_ID which allows folder accounts 2.0 on clickup but in this case we do a seperate because we search on a differ account set;
-const TEAM_ID = process.env.TEAM_ID
-const TOKEN = process.env.CLICKUP_API_KEY;
-//Boilerplate setup
 
-// The function takes a folder_id and figure out what space the folder is located in 
+const TEAM_ID = process.env.TEAM_ID;
+const TOKEN = process.env.CLICKUP_API_KEY;
+
+// ─── Helpers ────────────────────────────────────────────────────────────────
 
 async function findSpaceIdByChannel(hardcoded) {
-    // 1. Get all teams
     const teamsRes = await axios.get(
         "https://api.clickup.com/api/v2/team",
         { headers: { Authorization: TOKEN } }
     );
 
-    // 2. Loop through each team
     for (const team of teamsRes.data.teams) {
-
-        // 3. Get all spaces in this team
         const spacesRes = await axios.get(
             `https://api.clickup.com/api/v2/team/${team.id}/space`,
             { headers: { Authorization: TOKEN } }
         );
 
-        // 4. Loop through each space
         for (const space of spacesRes.data.spaces) {
-
-            // 5. Get all folders in this space
             const foldersRes = await axios.get(
                 `https://api.clickup.com/api/v2/space/${space.id}/folder`,
                 { headers: { Authorization: TOKEN } }
             );
 
-            // 6. Match folder by Slack channel ID
             for (const folder of foldersRes.data.folders) {
                 if (folder.name.includes(hardcoded)) {
-                    return space.id;   // <-- ONLY return space ID
+                    return space.id;
                 }
             }
         }
     }
 
-    return null; // nothing matched
+    return null;
 }
 
 
-
-
-// The function takes a folder_id and text, and populates a document with the text on that clickup channel specified by the id
-
-
-async function AddDocs(folder_id, text){ 
-        // Request that creates the document file, uses id property to get the file
-        const response = await axios.post(`https://api.clickup.com/api/v3/workspaces/${TEAM_ID}/docs`, {
-            name: "Sales Notes",  
-            parent: {
-            id: folder_id,
-            type: 5
-        },    
-        create_page: false 
+// Creates the doc + first page, returns { docId, pageId } for later updates
+async function AddDocs(folder_id, text) {
+    const docRes = await axios.post(
+        `https://api.clickup.com/api/v3/workspaces/${TEAM_ID}/docs`,
+        {
+            name: "Notes Doc Forever",
+            parent: { id: folder_id, type: 5 },
+            create_page: false
         },
-        { headers: { Authorization: TOKEN } })
-        console.log("TEXT TO WRITE:", text);
-        
-        // Now that doc has been made, we can, use the responses data to directly go the doc file and add pages with the text
-        const page = await axios.post(`https://api.clickup.com/api/v3/workspaces/${TEAM_ID}/docs/${response.data.id}/pages`, {
-            //parent_page_id: response.data.id,
-            name: "Sales Notes",  
-            sub_title: 'Notes',
-            content: text,    
-            content_format: 'text/plain'
+        { headers: { Authorization: TOKEN } }
+    );
+
+    const docId = docRes.data.id;
+    console.log("TEXT TO WRITE:", text);
+
+    const pageRes = await axios.post(
+        `https://api.clickup.com/api/v3/workspaces/${TEAM_ID}/docs/${docId}/pages`,
+        {
+            name: "Notes Page Forever",
+            sub_title: "Notes",
+            content: text,
+            content_format: "text/plain"
         },
+        { headers: { Authorization: TOKEN } }
+    );
 
-        { headers: { Authorization: TOKEN } })  
-    }
-
-
-
-
+    return { docId, pageId: pageRes.data.id };
+}
 
 
-router.post("/", async(req, res)=>{
-    // Check to make sure zapier info is recieved
+// Fetches the existing page, appends new notes, and updates it in place
+async function updateDocPage(docId, pageId, newNotes) {
+    // 1. Fetch current page content
+    const pageRes = await axios.get(
+        `https://api.clickup.com/api/v3/workspaces/${TEAM_ID}/docs/${docId}/pages/${pageId}`,
+        { headers: { Authorization: TOKEN } }
+    );
+
+    const existingContent = pageRes.data.content || "";
+    const timestamp = new Date().toISOString();
+    const appendedContent = `${existingContent}\n\n--- Update (${timestamp}) ---\n${newNotes}`;
+
+    // 2. PUT the updated content back
+    await axios.put(
+        `https://api.clickup.com/api/v3/workspaces/${TEAM_ID}/docs/${docId}/pages/${pageId}`,
+        {
+            content: appendedContent,
+            content_format: "text/plain"
+        },
+        { headers: { Authorization: TOKEN } }
+    );
+
+    console.log("ClickUp doc page updated with new notes.");
+}
+
+// ─── Route ──────────────────────────────────────────────────────────────────
+
+// Holds pending updates keyed by channel, populated by Zapier's follow-up POST
+const pendingUpdates = {};
+
+router.post("/", async (req, res) => {
     console.log("BODY RECEIVED FROM ZAPIER:", req.body);
 
     const hardcoded = req.body.channel;
-    const text =  req.body.notes
-    console.log("BODY RECEIVED FROM ZAPIER:", req.body.notes);  
-
-     
+    const text = req.body.notes;
+    console.log("NOTES FROM ZAPIER:", text);
 
     await logSlack(JSON.stringify(req.body, null, 2), 'C0AB218MM18');
 
+    // If this is a follow-up update from Zapier for an already-tracked channel,
+    // store the new notes and let the scheduled check pick them up
+    if (pendingUpdates[hardcoded]?.docCreated) {
+        console.log(`Follow-up notes received for channel: ${hardcoded}`);
+        pendingUpdates[hardcoded].latestNotes = text;
+        return res.sendStatus(200);
+    }
 
-    // This api searches the account space for the right folder and then calls Adddocs() to populate it 
-     setTimeout(async () => {
+    // First-time hit: initialize tracking for this channel
+    pendingUpdates[hardcoded] = { docCreated: false, latestNotes: null, docId: null, pageId: null };
+
+    res.sendStatus(200); // Respond to Zapier immediately
+
+    // ── Step 1: Create the doc after 5 minutes ──
+    setTimeout(async () => {
         try {
-            console.log("Running delayed ClickUp logic...");
+            console.log("Running initial ClickUp doc creation...");
+
             const SPACE_ID = await findSpaceIdByChannel(hardcoded);
-            // Does not loop for logging.
-            const response = await axios.get(
+            const foldersRes = await axios.get(
                 `https://api.clickup.com/api/v2/space/${SPACE_ID}/folder`,
                 { headers: { Authorization: TOKEN } }
             );
 
-            for (const folder of response.data.folders) {
+            for (const folder of foldersRes.data.folders) {
                 if (folder.name.includes(hardcoded)) {
-                    await AddDocs(folder.id, text);
-                    console.log("ClickUp doc created successfully");
-                    console.log(folder)
+                    const { docId, pageId } = await AddDocs(folder.id, text);
+                    console.log("ClickUp doc created successfully.");
+
+                    // Mark as created and store IDs for the update check
+                    pendingUpdates[hardcoded].docCreated = true;
+                    pendingUpdates[hardcoded].docId = docId;
+                    pendingUpdates[hardcoded].pageId = pageId;
                 }
             }
         } catch (err) {
-            console.error("Error during delayed execution:", err);
+            console.error("Error during doc creation:", err);
         }
     }, 5 * 60 * 1000); // 5 minutes
 
-    // After creating doc, fetch latest notes from GHL
-const updatedNotes = await fetchNotesFromGHL(contactId);
+    // ── Step 2: Check for new notes 5 minutes after doc creation (10 min total) ──
+    setTimeout(async () => {
+        try {
+            const state = pendingUpdates[hardcoded];
 
-// Append them ONCE
-await appendNoteToDoc(docId, updatedNotes);
+            if (!state?.docCreated) {
+                console.log(`Doc not yet created for channel ${hardcoded}, skipping update check.`);
+                return;
+            }
+
+            if (!state.latestNotes) {
+                console.log(`No new notes received for channel ${hardcoded} since doc creation.`);
+            } else {
+                console.log(`Appending new notes to doc for channel ${hardcoded}...`);
+                await updateDocPage(state.docId, state.pageId, state.latestNotes);
+            }
+
+        } catch (err) {
+            console.error("Error during doc update check:", err);
+        } finally {
+            // Clean up memory once we're done with this channel
+            delete pendingUpdates[hardcoded];
+        }
+    }, 10 * 60 * 1000); // 10 minutes (5 min after doc creation)
 });
-
-
-
+//
 module.exports = router;
-
