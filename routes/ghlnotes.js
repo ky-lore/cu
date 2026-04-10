@@ -125,6 +125,12 @@ router.post("/", async(req, res)=>{
             console.error("Error during delayed execution:", err);
         }
     }, 5 * 60 * 1000); // 5 minutes
+
+    // After creating doc, fetch latest notes from GHL
+const updatedNotes = await fetchNotesFromGHL(contactId);
+
+// Append them ONCE
+await appendNoteToDoc(docId, updatedNotes);
 });
 
 
