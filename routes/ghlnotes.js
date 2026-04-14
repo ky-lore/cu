@@ -171,7 +171,7 @@ router.post("/", async (req, res) => {
             // Clean up memory once we're done with this channel
             delete pendingUpdates[hardcoded];
         }
-    }, 10 * 60 * 1000); // 10 minutes (5 min after doc creation)
+    }, 1 * 60 * 1000); // 10 minutes (5 min after doc creation)
 });
 //
 module.exports = router;
