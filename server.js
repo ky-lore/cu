@@ -33,7 +33,7 @@ app.use("/packagetype", require("./routes/packagetype"));
 app.use("/persontask", require("./routes/persontask"));
 app.use("/forevernotes", require("./routes/forevernotes"));
 app.use("/notesupdate", require("./routes/notesupdate"));
-
+app.use("/personallist", require("./routes/personallist"));
 
 const port = 8080;
 const axios = require("axios");
