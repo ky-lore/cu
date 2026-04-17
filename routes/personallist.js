@@ -33,17 +33,14 @@ router.post("/", async (req, res) => {
       return;
     }
 
-    // ✅ Use assignee email instead of creator email
-    const assignees = task?.assignees || [];
-    if (assignees.length === 0) {
-      console.log("⏭️ No assignees on task, skipping.");
+    // ✅ Back to creator email
+    const email = task?.creator?.email;
+    if (!email) {
+      console.log("⏭️ No creator email, skipping.");
       return;
     }
 
-    const email = assignees[0]?.email;
-    if (!email) return;
-
-    console.log("Assignee email:", email);
+    console.log("Creator email:", email);
 
     const listsResp = await clickup.get(`/space/${SPACE_ID}/list`);
     const targetList = listsResp.data.lists.find(
@@ -58,7 +55,7 @@ router.post("/", async (req, res) => {
     await clickup.post(`/list/${targetList.id}/task`, {
       name: task.name,
       description: task.description || "",
-      assignees: assignees.map((a) => a.id),
+      assignees: task.assignees?.map((a) => a.id) || [],
       tags: ["auto-copied"],
     });
 
